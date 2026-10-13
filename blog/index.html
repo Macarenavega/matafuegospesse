@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Seguridad Contra Incendios | Matafuegos Pesse</title>
+  <meta name="description" content="Artículos sobre matafuegos, normativas y prevención de incendios para empresas de Buenos Aires. Por Matafuegos Pesse.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://matafuegospesse.com/blog/">
+  <meta property="og:title" content="Blog — Seguridad Contra Incendios | Matafuegos Pesse">
+  <meta property="og:description" content="Artículos sobre seguridad contra incendios, normativas y mantenimiento de matafuegos en Buenos Aires.">
+  <meta property="og:url" content="https://matafuegospesse.com/blog/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #111111;
+      --red: #C41E2A;
+      --red-dark: #900E18;
+      --white: #FFFFFF;
+      --gray-bg: #F5F6F8;
+      --gray-mid: #737880;
+      --gray-border: #DEE1E6;
+      --max-w: 1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--black); background: var(--white); line-height: 1.6; }
+    h1, h2, h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; line-height: 1.1; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--gray-border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-text-main { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; color: var(--black); }
+    .logo-text-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; color: var(--red); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-mid); text-decoration: none; transition: color .15s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--red) !important; color: var(--white) !important; padding: 8px 20px; border-radius: 4px; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--red-dark) !important; }
+
+    .blog-hero { background: var(--black); padding: 64px 24px; text-align: center; }
+    .blog-hero h1 { font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 12px; }
+    .blog-hero p { color: #8A9099; font-size: 16px; }
+
+    .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; padding: 64px 0; }
+
+    .post-card { border: 1px solid var(--gray-border); border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow .15s; }
+    .post-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .post-card-tag { background: var(--red); color: var(--white); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 16px; display: block; }
+    .tag-normativa { background: #1a3a5c; }
+    .tag-guia { background: #2d4a3e; }
+    .tag-alerta { background: #7a4f00; }
+    .tag-historia { background: #3d2b1f; }
+    .post-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .post-card-body h2 { font-size: 22px; line-height: 1.2; }
+    .post-card-body p { font-size: 14px; color: var(--gray-mid); flex: 1; }
+    .post-meta { font-size: 12px; color: var(--gray-mid); margin-top: 8px; }
+    .read-more { font-size: 13px; font-weight: 600; color: var(--red); margin-top: 12px; }
+
+    footer { background: var(--black); padding: 32px 24px; text-align: center; }
+    .footer-copy { font-size: 13px; color: #555; margin-top: 12px; }
+    .footer-nav { display: flex; gap: 20px; justify-content: center; list-style: none; flex-wrap: wrap; }
+    .footer-nav a { font-size: 13px; color: #555; text-decoration: none; }
+    .footer-nav a:hover { color: var(--white); }
+
+    @media (max-width: 640px) {
+      .nav-inner{height:auto;flex-wrap:wrap;row-gap:8px;padding-top:10px;padding-bottom:10px}.nav-links{display:flex;width:100%;overflow-x:auto;gap:18px;white-space:nowrap;padding-bottom:4px;scrollbar-width:none}
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 2C14 2 6 9 6 16a8 8 0 0016 0c0-7-8-14-8-14z" fill="#C41E2A"/><path d="M14 10c0 0-3 3.5-3 6a3 3 0 006 0c0-2.5-3-6-3-6z" fill="#fff" opacity=".7"/></svg>
+      <div>
+        <div class="logo-text-main">MATAFUEGOS PESSE</div>
+        <div class="logo-text-sub">Desde 1995</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/#nosotros">Nosotros</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+      <li><a href="/blog/" style="color:var(--black);font-weight:600">Blog</a></li>
+      <li><a href="https://api.whatsapp.com/send?phone=+541121685408&text=Hola!%20Vi%20la%20web%20y%20quisiera%20pedir%20una%20cotizaci%C3%B3n." class="nav-cta">Pedir cotización</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <h1>Blog de Seguridad Contra Incendios</h1>
+  <p>Normativas, mantenimiento y prevención para empresas de Buenos Aires</p>
+</div>
+
+<div class="container">
+  <div class="posts-grid">
+
+    <a href="/blog/cada-cuanto-revisar-matafuegos" class="post-card">
+      <span class="post-card-tag">Mantenimiento</span>
+      <div class="post-card-body">
+        <h2>¿Cada cuánto hay que revisar los matafuegos?</h2>
+        <p>La normativa IRAM y ART establece plazos claros. Incumplirlos puede invalidar tu seguro y generar multas. Acá te explicamos los ciclos obligatorios.</p>
+        <div class="post-meta">18 de septiembre de 2026 · 4 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+    <a href="/blog/tipos-de-matafuegos" class="post-card">
+      <span class="post-card-tag tag-guia">Guía</span>
+      <div class="post-card-body">
+        <h2>Tipos de matafuegos: cuál usar en cada situación</h2>
+        <p>Agua, polvo, CO₂, halón… elegir mal puede empeorar un incendio. Esta guía explica qué tipo corresponde según el tipo de fuego y la actividad de tu empresa.</p>
+        <div class="post-meta">10 de septiembre de 2026 · 5 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+    <a href="/blog/incendio-en-casa-extintor-salvo-mi-hogar" class="post-card">
+      <span class="post-card-tag tag-historia">Historia real</span>
+      <div class="post-card-body">
+        <h2>"Tenía un matafuego en casa y salvé todo"</h2>
+        <p>Ramón se despertó a la 1am con su cocina en llamas. Tenía un extintor detrás de la puerta. Esta es la historia de los veinte segundos que salvaron su casa en Morón.</p>
+        <div class="post-meta">18 de septiembre de 2026 · 4 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+    <a href="/blog/buenas-practicas-contra-incendios-en-empresas" class="post-card">
+      <span class="post-card-tag tag-historia">Historia real</span>
+      <div class="post-card-body">
+        <h2>40 segundos y cero heridos: cómo una brigada capacitada salvó una fábrica</h2>
+        <p>Un cortocircuito en un depósito de Merlo. 23 personas trabajando. La brigada actuó en 40 segundos. Lo que pasó antes para que fuera posible.</p>
+        <div class="post-meta">18 de septiembre de 2026 · 5 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+    <a href="/blog/cambio-polvo-quimico-seco-cada-10-anos" class="post-card">
+      <span class="post-card-tag">Mantenimiento</span>
+      <div class="post-card-body">
+        <h2>Por qué hay que cambiar el polvo del matafuego cada 10 años</h2>
+        <p>El polvo ABC se compacta, absorbe humedad y pierde eficacia aunque el extintor nunca fue usado. Es el mantenimiento más ignorado — y es obligatorio por norma IRAM.</p>
+        <div class="post-meta">18 de septiembre de 2026 · 4 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+    <a href="/blog/matafuego-vencido-puede-explotar" class="post-card">
+      <span class="post-card-tag">Seguridad</span>
+      <div class="post-card-body">
+        <h2>Qué pasa cuando un matafuego no recibe el mantenimiento correcto</h2>
+        <p>En mayo de 2026 murió un empleado en Chaco cuando explotó un extintor durante una recarga. El dueño fue imputado por homicidio culposo. Qué falló y cómo se previene con mantenimiento certificado.</p>
+        <div class="post-meta">18 de septiembre de 2026 · 5 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+    <a href="/blog/estafa-matafuegos-retiran-cobran-de-mas" class="post-card">
+      <span class="post-card-tag tag-alerta">Alerta</span>
+      <div class="post-card-body">
+        <h2>Cuidado: la estafa del matafuego que ya afectó a comerciantes en todo el país</h2>
+        <p>Entran a tu local, retiran los matafuegos con cualquier excusa y después cobran lo que quieren bajo presión. Así funciona la estafa y cómo no caer.</p>
+        <div class="post-meta">18 de septiembre de 2026 · 4 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+    <a href="/blog/por-que-los-matafuegos-baratos-pueden-salir-caros" class="post-card">
+      <span class="post-card-tag tag-guia">Guía de compra</span>
+      <div class="post-card-body">
+        <h2>Por qué un matafuego barato puede salirte muy caro</h2>
+        <p>En MercadoLibre hay extintores más económicos. Acá explicamos qué diferencia hace el sello IRAM cuando lo necesitás de verdad — y qué pasa con tu seguro si no lo tenés.</p>
+        <div class="post-meta">18 de septiembre de 2026 · 5 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+    <a href="/blog/normativa-matafuegos-argentina" class="post-card">
+      <span class="post-card-tag tag-normativa">Normativa</span>
+      <div class="post-card-body">
+        <h2>Normativa de matafuegos en Argentina: qué dice la ley</h2>
+        <p>Ley 19587, Decreto 351/79, normas IRAM y resoluciones de la SRT. Todo lo que una empresa argentina debe cumplir en materia de extintores.</p>
+        <div class="post-meta">2 de septiembre de 2026 · 6 min de lectura</div>
+        <span class="read-more">Leer artículo →</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <ul class="footer-nav">
+    <li><a href="/#servicios">Servicios</a></li>
+    <li><a href="/#redes">Redes</a></li>
+    <li><a href="/#seguridad">Seg. e Higiene</a></li>
+    <li><a href="/#contacto">Contacto</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Matafuegos Pesse · Sarandí 416, Merlo, Buenos Aires</p>
+</footer>
+
+</body>
+</html>

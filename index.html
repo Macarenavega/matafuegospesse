@@ -49,6 +49,10 @@
     "telephone": "+54-220-486-1235",
     "email": "info@matafuegospesse.com",
     "foundingDate": "1995",
+    "hasCertification": [
+      {"@type": "Certification", "name": "Certificado DC-P-M400-001.1 — IRAM 3517-2:2005: servicio de control, mantenimiento y recarga de extintores"},
+      {"@type": "Certification", "name": "Habilitación provincial DPS N.º 330 — Provincia de Buenos Aires"}
+    ],
     "openingHoursSpecification": [
       {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "18:00"},
       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00"}
@@ -678,7 +682,9 @@
 
     .footer-nav {
       display: flex;
-      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 24px;
       list-style: none;
     }
 
@@ -755,6 +761,11 @@
       *, *::before, *::after { transition: none !important; }
     }
     img { height: auto; }
+    .faq-list { max-width: 820px; }
+    .faq-item { border-bottom: 1px solid var(--gray-border); padding: 18px 0; }
+    .faq-item summary { font-weight: 600; font-size: 17px; cursor: pointer; }
+    .faq-item p { margin-top: 10px; color: #3A4048; }
+    .faq-item a { color: var(--red); font-weight: 600; }
     .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   </style>
 </head>
@@ -833,7 +844,7 @@
       <div class="service-card">
         <span class="service-icon">🔧</span>
         <h3 class="service-title">Extintores — Mantenimiento</h3>
-        <p class="service-desc">Recarga, prueba hidráulica y certificación según norma IRAM 3517. Servicio técnico habilitado.</p>
+        <p class="service-desc">Recarga, prueba hidráulica y certificación según norma IRAM 3517. Servicio técnico habilitado. <a href="/recarga-de-matafuegos/" style="color:var(--red);font-weight:600">Ver servicio →</a></p>
       </div>
       <div class="service-card">
         <span class="service-icon"><img width="512" height="512" loading="lazy" decoding="async" src="/img/mangueras-contra-incendio.png" alt="Mangueras contra incendio" style="width:48px;height:48px;object-fit:contain;"></span>
@@ -983,8 +994,27 @@
           <li>Capacitación del personal en prevención y uso de extintores</li>
           <li>Elaboración de matrices de riesgo y procedimientos de emergencia</li>
         </ul>
+        <p style="margin-top:20px"><a href="/seguridad-e-higiene/" style="color:var(--red);font-weight:600">Conocé el servicio de Seguridad e Higiene →</a></p>
         <a href="https://api.whatsapp.com/send?phone=+541121685408&text=Hola!%20Necesito%20asesoramiento%20en%20Seguridad%20e%20Higiene." class="btn-primary" style="margin-top: 32px; background: var(--black);">Pedir asesoramiento</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREGUNTAS FRECUENTES -->
+<section id="preguntas" class="faq-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Preguntas frecuentes</p>
+      <h2 class="section-title">Lo que más nos consultan</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item"><summary>¿Cada cuánto hay que recargar un matafuego?</summary><p>Una vez por año como mínimo y siempre después de cualquier uso. Además, el cilindro necesita una prueba hidráulica cada 5 años y, en los equipos de polvo, el cambio de polvo cada 10 años. <a href="/blog/cada-cuanto-revisar-matafuegos">Ver plazos</a>.</p></details>
+      <details class="faq-item"><summary>¿Cuántos matafuegos necesita mi empresa?</summary><p>Como regla general, al menos uno cada 200 m² de superficie cubierta, del tipo adecuado al riesgo de la actividad y a una distancia de recorrido limitada. Cada caso depende del local: te asesoramos sin cargo. <a href="/blog/normativa-matafuegos-argentina">Ver normativa</a>.</p></details>
+      <details class="faq-item"><summary>¿Están certificados?</summary><p>Sí. Nuestro servicio de control, mantenimiento y recarga está certificado según IRAM 3517-2:2005 (certificado N.º DC-P-M400-001.1) y tenemos habilitación provincial DPS N.º 330 y habilitación en CABA. <a href="/certificaciones/">Ver certificaciones</a>.</p></details>
+      <details class="faq-item"><summary>¿Qué zonas cubren?</summary><p>Desde Merlo atendemos toda la Zona Oeste (Morón, Ituzaingó, Moreno, Luján, La Matanza, Tres de Febrero y San Martín), el resto de la Provincia de Buenos Aires y CABA.</p></details>
+      <details class="faq-item"><summary>¿Cuál es el horario de atención?</summary><p>Lunes a viernes de 8:00 a 18:00 y sábados de 9:00 a 13:00. Por WhatsApp podés escribirnos en cualquier momento y respondemos en el día hábil.</p></details>
+      <details class="faq-item"><summary>¿Cómo sé si una empresa de matafuegos es confiable?</summary><p>Pedí el número de certificado o habilitación, que la visita se coordine con el responsable y que la factura esté a nombre de la empresa. <a href="/blog/como-elegir-empresa-recarga-matafuegos">Ver las 8 claves</a>.</p></details>
     </div>
   </div>
 </section>
@@ -1047,7 +1077,9 @@
         <li><a href="#redes">Redes</a></li>
         <li><a href="#seguridad">Seg. e Higiene</a></li>
         <li><a href="#contacto">Contacto</a></li>
-        <li><a href="https://matafuegospesse.com/blog/">Blog</a></li>
+        <li><a href="/recarga-de-matafuegos/">Recarga</a></li>
+        <li><a href="/certificaciones/">Certificaciones</a></li>
+        <li><a href="/blog/">Blog</a></li>
       </ul>
     </div>
   </div>

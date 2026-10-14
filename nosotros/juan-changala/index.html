@@ -12,7 +12,9 @@
   <meta property="og:title" content="Juan Changala — Lic. en Higiene y Seguridad en el Trabajo">
   <meta property="og:description" content="Matrícula LHS-001107 PBA. Autor de las guías técnicas de Matafuegos Pesse.">
   <meta property="og:url" content="https://matafuegospesse.com/nosotros/juan-changala/">
-  <meta property="og:image" content="https://matafuegospesse.com/og-image.jpg">
+  <meta property="og:image" content="https://matafuegospesse.com/img/juan-changala.webp">
+  <meta property="og:image:width" content="480">
+  <meta property="og:image:height" content="480">
 
   <script type="application/ld+json">
   {
@@ -32,6 +34,7 @@
         "name": "Juan Changala",
         "alternateName": "Juan Manuel Rubén Changala",
         "url": "https://matafuegospesse.com/nosotros/juan-changala/",
+        "image": "https://matafuegospesse.com/img/juan-changala.webp",
         "jobTitle": "Licenciado en Higiene y Seguridad en el Trabajo",
         "worksFor": {"@id": "https://matafuegospesse.com/#business"},
         "alumniOf": {"@type": "CollegeOrUniversity", "name": "Universidad de Morón"},
@@ -105,7 +108,9 @@
     .breadcrumb { font-size: 13px; color: var(--gray-mid); margin-bottom: 20px; }
     .breadcrumb a { color: var(--gray-mid); }
     .profile-wrap h1 { font-size: clamp(34px, 5vw, 52px); margin-bottom: 6px; }
-    .profile-title { font-size: 17px; color: var(--red); font-weight: 600; margin-bottom: 28px; }
+    .profile-title { font-size: 17px; color: var(--red); font-weight: 600; }
+    .profile-head { display: flex; align-items: center; gap: 28px; margin-bottom: 32px; }
+    .profile-photo { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
     .profile-wrap h2 { font-size: 28px; margin: 40px 0 14px; }
     .profile-wrap p { margin-bottom: 16px; font-size: 16px; }
     .profile-wrap ul { margin: 0 0 16px 22px; font-size: 16px; }
@@ -130,6 +135,8 @@
     @media (max-width: 640px) {
       .nav-inner{height:auto;flex-wrap:wrap;row-gap:8px;padding-top:10px;padding-bottom:10px}.nav-links{display:flex;width:100%;overflow-x:auto;gap:18px;white-space:nowrap;padding-bottom:4px;scrollbar-width:none}
       .cred-table th { width: 42%; }
+      .profile-head { flex-direction: column; align-items: flex-start; gap: 18px; }
+      .profile-photo { width: 110px; height: 110px; }
     }
   </style>
 </head>
@@ -157,8 +164,13 @@
 <main class="profile-wrap">
   <p class="breadcrumb"><a href="/">Inicio</a> › <a href="/#nosotros">Nosotros</a> › Juan Changala</p>
 
-  <h1>Juan Changala</h1>
-  <p class="profile-title">Licenciado en Higiene y Seguridad en el Trabajo · Matrícula LHS-001107 PBA</p>
+  <div class="profile-head">
+    <img src="/img/juan-changala.webp" width="480" height="480" alt="Juan Changala, Licenciado en Higiene y Seguridad en el Trabajo" class="profile-photo" fetchpriority="high">
+    <div>
+      <h1>Juan Changala</h1>
+      <p class="profile-title">Licenciado en Higiene y Seguridad en el Trabajo · Matrícula LHS-001107 PBA</p>
+    </div>
+  </div>
 
   <p>Juan Changala es Licenciado en Higiene y Seguridad en el Trabajo, egresado de la Universidad de Morón, y está matriculado en el Colegio de Profesionales de la Higiene y Seguridad en el Trabajo de la Provincia de Buenos Aires.</p>
   <p>En Matafuegos Pesse escribe y revisa las guías técnicas del blog: plazos de mantenimiento, tipos de matafuegos, normativa vigente y prevención de incendios en empresas.</p>

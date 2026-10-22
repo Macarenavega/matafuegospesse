@@ -121,6 +121,7 @@ uniform float uStrength;
 uniform float uGrow;
 uniform float uFill;
 uniform float uSpread;
+uniform float uQuench;
 ${NOISE}
 float segDist(vec2 p, vec2 a, vec2 b){
   vec2 pa = p - a, ba = b - a;
@@ -169,6 +170,15 @@ void main(){
   // two quick sweeps put the fire out; a resting cursor barely touches it
   float lost = min(fuel, fe*(0.0025 + 0.14*uSpeed)*uStrength*uDt);
   fuel -= lost;
+
+  // one full pass: the whole fire is smothered at once, bed and flames together
+  float qk = 1.0 - exp(-uQuench*uDt);
+  float qh = h*qk;
+  float ql = fuel*min(1.0, qk*1.4);
+  h -= qh;
+  fuel -= ql;
+  removed += qh;
+  lost += ql;
 
   // what is left behind: a charred bed and smoke where the heat was knocked down
   float bedZone = 1.0 - smoothstep(uBedH*(0.8 + 0.8*vnoise(vec2(uv.x*12.0, 1.7))), uBedH*2.6, uv.y);
@@ -607,6 +617,9 @@ class FireEngine {
   private heatShown = 1
   private out = false
   private outAt = 0
+  /** Put out for good by one full pass: no regrowth until reload. */
+  private quenched = false
+  private quenchAt = 0
 
   private time = 0
   private frameNo = 0
@@ -815,6 +828,15 @@ class FireEngine {
     this.wake()
   }
 
+  /** Smothers the whole fire, as one full sweep of the extinguisher does. */
+  quench() {
+    if (this.quenched || this.lost) return
+    this.quenched = true
+    this.quenchAt = 0
+    if (!this.firstInput) this.firstInput = performance.now()
+    this.wake()
+  }
+
   setVisible(v: boolean) {
     this.visible = v
     if (v) this.wake()
@@ -902,7 +924,7 @@ class FireEngine {
     if (this.presence < 0.001 && this.presenceTarget === 0) this.presence = 0
 
     // a dead fire that will not come back: stop once the smoke has cleared
-    if (this.out && !o.reignite && this.presence === 0 && now - this.outAt > 6000 && now - this.lastInput > 6000) {
+    if (this.out && (!o.reignite || this.quenched) && this.presence === 0 && now - this.outAt > 6000 && now - this.lastInput > 6000) {
       this.draw()
       return false
     }
@@ -915,6 +937,15 @@ class FireEngine {
       this.intro = Math.min(1, this.intro + Math.min(rawMs, 50) / INTRO_MS)
       grow = 8
       fill = this.intro > 0.6 ? 0.05 : 0
+    } else if (this.quenched) {
+      // waits for the intro so the fire has caught before it is smothered
+      if (!this.quenchAt) this.quenchAt = now
+      // reported once it has collapsed, without waiting on a heat reading
+      if (!this.out && now - this.quenchAt > 1100) {
+        this.out = true
+        this.outAt = now
+        this.onStatus?.(true, { durationMs: now - this.firstInput })
+      }
     } else if (o.reignite && now - this.lastInput > o.reigniteDelay) {
       grow = clamp(o.reigniteSpeed, 0, 2) * clamp((now - this.lastInput - o.reigniteDelay) / 1000, 0, 1)
     }
@@ -981,6 +1012,9 @@ class FireEngine {
     gl.uniform1f(P.u.uGrow, grow)
     gl.uniform1f(P.u.uFill, fill)
     gl.uniform1f(P.u.uSpread, 5)
+    // ramps in over ~0.3 s so the fire collapses rather than blinking out
+    const q = this.quenchAt ? clamp((performance.now() - this.quenchAt) / 300, 0, 1) : 0
+    gl.uniform1f(P.u.uQuench, q * (rm ? 0.05 : 0.09))
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
     this.heatIdx = dst
   }
@@ -1042,7 +1076,7 @@ class FireEngine {
       this.out = true
       this.outAt = now
       this.onStatus?.(true, { durationMs: now - this.firstInput })
-    } else if (this.out && ratio > 0.25) {
+    } else if (this.out && !this.quenched && ratio > 0.25) {
       this.out = false
       this.firstInput = 0
       this.onStatus?.(false, { durationMs: 0 })
@@ -1127,6 +1161,14 @@ export interface FireHeroLink {
   href: string
 }
 
+export interface FirePromo {
+  badge?: string
+  title: string
+  body?: string
+  cta?: FireHeroLink
+  note?: string
+}
+
 export interface FireExtinguishHeroProps {
   /* fire */
   /** 0 – 2 */
@@ -1152,6 +1194,8 @@ export interface FireExtinguishHeroProps {
   agent?: ExtinguishingAgent
   /** Smoke where the fire is knocked down. */
   smoke?: boolean
+  /** Share (0 – 1) of the fire's width one pass must cross to put it all out for good; 0 keeps it gradual. */
+  sweepToExtinguish?: number
   /** Fires once each time the fire is put out (total heat below 5%). */
   onExtinguished?: (info: ExtinguishInfo) => void
 
@@ -1183,6 +1227,8 @@ export interface FireExtinguishHeroProps {
   hintTouch?: string
   /** Shown over the fire once it is out (empty to hide). */
   extinguishedMessage?: string
+  /** Offer revealed where the fire was, once it is out. Replaces the message. */
+  promo?: FirePromo
   /** Visually hidden description of the animation, for screen readers. */
   visualLabel?: string
 
@@ -1295,6 +1341,18 @@ const CSS = `
 .fh-root[data-out="1"] .fh-out{opacity:1;visibility:visible;transition:opacity .9s ease .3s,visibility 0s,transform .9s cubic-bezier(.2,.7,.2,1) .3s}
 .fh-outmsg{margin:0;font-family:var(--fh-accent);font-style:var(--fh-accent-style,italic);font-size:clamp(28px,min(4.2cqw,7cqh),56px);line-height:1.05;
   letter-spacing:-.02em;color:var(--fh-fg);text-wrap:balance}
+.fh-out-promo{width:min(520px,calc(100cqw - 32px))}
+.fh-root[data-out="1"] .fh-cssfire{opacity:0}
+.fh-promo{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;padding:clamp(22px,3cqw,34px) clamp(20px,3cqw,36px);
+  border:1px solid color-mix(in srgb,var(--fh-acc) 55%,transparent);border-radius:20px;
+  background:color-mix(in srgb,var(--fh-bg) 82%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  box-shadow:0 24px 60px -24px color-mix(in srgb,var(--fh-acc) 45%,transparent)}
+.fh-promo-badge{margin:0;padding:6px 12px;border-radius:999px;background:var(--fh-acc);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase}
+.fh-promo-title{margin:0;font-family:var(--fh-head);font-weight:600;font-size:clamp(28px,min(4cqw,7cqh),48px);line-height:1;letter-spacing:-.02em;text-wrap:balance}
+.fh-promo-body{margin:0;font-size:clamp(14.5px,1.05cqw,16px);line-height:1.5;opacity:.82;text-wrap:pretty;max-width:42ch}
+.fh-promo .fh-btn{margin-top:4px}
+.fh-promo-note{margin:0;font-size:11.5px;opacity:.5}
 .fh-spacer{flex:1 1 auto;min-height:0}
 .fh-content{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);align-items:end;
   gap:clamp(24px,4cqw,72px);padding:0 clamp(20px,3.2cqw,48px) clamp(28px,3.4cqw,52px)}
@@ -1400,6 +1458,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
     extinguishStrength = 1,
     agent = "powder",
     smoke = true,
+    sweepToExtinguish = 0.6,
     onExtinguished,
     reignite = true,
     reigniteDelay = 2500,
@@ -1419,6 +1478,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
     hint = DEFAULTS.hint,
     hintTouch = DEFAULTS.hintTouch,
     extinguishedMessage = DEFAULTS.extinguishedMessage,
+    promo,
     visualLabel = DEFAULTS.visualLabel,
     background = DEFAULTS.background,
     textColor = DEFAULTS.textColor,
@@ -1444,6 +1504,8 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
   const [isOut, setIsOut] = React.useState(false)
 
   const widthRef = React.useRef(clamp(fireWidth, 0.1, 1))
+  const rectRef = React.useRef<Rect>({ x: 0, y: 0, w: 1, h: 1 })
+  const sweepRef = React.useRef(clamp(sweepToExtinguish, 0, 1))
   const onExtinguishedRef = React.useRef(onExtinguished)
 
   const bgRgb = React.useMemo(() => hexToRgb(background, [0.043, 0.043, 0.047]), [background])
@@ -1476,6 +1538,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
   // the engine reads the latest props through refs, refreshed after every render
   React.useLayoutEffect(() => {
     widthRef.current = clamp(fireWidth, 0.1, 1)
+    sweepRef.current = clamp(sweepToExtinguish, 0, 1)
     onExtinguishedRef.current = onExtinguished
     optsRef.current = engineOpts
   })
@@ -1496,6 +1559,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
       bottom: content ? content.offsetTop - 8 : h,
     }
     const rect = computeRect(w, band, widthRef.current)
+    rectRef.current = rect
     const css = cssFireRef.current
     if (css) {
       css.style.left = rect.x + rect.w * 0.12 + "px"
@@ -1513,9 +1577,10 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
     }
     const outEl = outRef.current
     if (outEl) {
-      outEl.style.display = roomy ? "" : "none"
+      // the offer is the payoff, so it shows even in a short hero, just higher up
+      outEl.style.display = roomy || outEl.dataset.promo ? "" : "none"
       outEl.style.left = w / 2 + "px"
-      outEl.style.top = rect.y + rect.h * 0.55 + "px"
+      outEl.style.top = Math.max(band.top + outEl.offsetHeight / 2, rect.y + rect.h * 0.55) + "px"
     }
     engineRef.current?.resize(w, h, rect)
   }, [])
@@ -1555,6 +1620,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
     // the band moves when fonts load or the copy reflows
     if (navRef.current) ro.observe(navRef.current)
     if (contentRef.current) ro.observe(contentRef.current)
+    if (outRef.current) ro.observe(outRef.current)
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) engine?.setVisible(e.isIntersecting && !document.hidden)
     })
@@ -1568,6 +1634,40 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
       const b = root.getBoundingClientRect()
       return [e.clientX - b.left, e.clientY - b.top] as const
     }
+    // one pass: the share of the fire's width the pointer has crossed over the flames
+    const BINS = 24
+    const swept = new Uint8Array(BINS)
+    let sweptCount = 0
+    let lastX: number | null = null
+    let done = false
+    const sweep = (x: number, y: number) => {
+      const need = sweepRef.current
+      if (done || need <= 0) return
+      const r = rectRef.current
+      if (y < r.y - 40 || y > r.y + r.h + 40) {
+        lastX = null
+        return
+      }
+      const from = lastX ?? x
+      lastX = x
+      const a = Math.floor(((Math.min(from, x) - r.x) / r.w) * BINS)
+      const b = Math.floor(((Math.max(from, x) - r.x) / r.w) * BINS)
+      for (let i = Math.max(0, a); i <= Math.min(BINS - 1, b); i++) {
+        if (!swept[i]) {
+          swept[i] = 1
+          sweptCount++
+        }
+      }
+      if (sweptCount >= Math.ceil(need * BINS)) {
+        done = true
+        if (engine && root.dataset.gl !== "off") engine.quench()
+        else {
+          // CSS fallback: nothing to simulate, so just put it out
+          setIsOut(true)
+          onExtinguishedRef.current?.({ durationMs: 0 })
+        }
+      }
+    }
     let touched = false
     const markTouched = () => {
       if (!touched) {
@@ -1580,20 +1680,25 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
       const touch = e.pointerType === "touch"
       if (touch && e.buttons === 0 && e.pressure === 0) return
       engine?.pointer("move", x, y, touch)
+      sweep(x, y)
       markTouched()
     }
     const onDown = (e: PointerEvent) => {
       const [x, y] = pos(e)
+      lastX = null
       engine?.pointer("down", x, y, e.pointerType === "touch")
+      sweep(x, y)
       markTouched()
     }
     const onUp = (e: PointerEvent) => {
       const [x, y] = pos(e)
       engine?.pointer("up", x, y, e.pointerType === "touch")
+      lastX = null
     }
     const onLeave = (e: PointerEvent) => {
       const [x, y] = pos(e)
       engine?.pointer("leave", x, y, e.pointerType === "touch")
+      lastX = null
     }
     root.addEventListener("pointermove", onMove, { passive: true })
     root.addEventListener("pointerdown", onDown, { passive: true })
@@ -1629,7 +1734,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
 
   React.useEffect(() => {
     relayout()
-  }, [fireWidth, relayout])
+  }, [fireWidth, isOut, relayout])
 
   const vars = {
     "--fh-bg": background,
@@ -1652,7 +1757,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
       ref={rootRef}
       className={"fh-root" + (className ? " " + className : "")}
       style={{ ...vars, ...style }}
-      data-out={isOut && extinguishedMessage ? "1" : undefined}
+      data-out={isOut && (promo || extinguishedMessage) ? "1" : undefined}
     >
       <style>{CSS}</style>
       <div ref={stageRef} className="fh-stage" aria-hidden="true">
@@ -1696,7 +1801,24 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
         </div>
       ) : null}
 
-      {extinguishedMessage ? (
+      {promo ? (
+        <div ref={outRef} className="fh-out fh-out-promo" data-promo="1" aria-live="polite">
+          {isOut ? (
+            <div className="fh-promo">
+              {promo.badge ? <p className="fh-promo-badge">{promo.badge}</p> : null}
+              <p className="fh-promo-title">{promo.title}</p>
+              {promo.body ? <p className="fh-promo-body">{promo.body}</p> : null}
+              {promo.cta && promo.cta.label ? (
+                <a className="fh-btn" href={promo.cta.href}>
+                  {promo.cta.label}
+                  <Arrow />
+                </a>
+              ) : null}
+              {promo.note ? <p className="fh-promo-note">{promo.note}</p> : null}
+            </div>
+          ) : null}
+        </div>
+      ) : extinguishedMessage ? (
         <div ref={outRef} className="fh-out" aria-live="polite">
           {isOut ? <p className="fh-outmsg">{extinguishedMessage}</p> : null}
           {isOut && primaryCta && primaryCta.label ? (

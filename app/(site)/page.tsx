@@ -4,6 +4,10 @@ import { JsonLd } from "@/components/json-ld"
 import FireExtinguishHero from "@/components/ui/fire-extinguish-hero"
 import { WHATSAPP_URL } from "@/lib/site"
 
+const PROMO_WHATSAPP_URL =
+  "https://api.whatsapp.com/send?phone=+541121685408&text=" +
+  encodeURIComponent("Hola! Apagué el fuego en la web y quiero la promo: cotización sin cargo con retiro y entrega.")
+
 export const metadata: Metadata = {
   title: "Matafuegos Pesse — Extintores y Seguridad, Buenos Aires",
   description: "Venta, recarga y mantenimiento de matafuegos en Buenos Aires. Redes contra incendios, señalización y SyH. Certificados IRAM desde 1995. Cotizá sin cargo.",
@@ -233,8 +237,15 @@ export default function Page() {
         body="Venta, recarga y mantenimiento de matafuegos con certificación IRAM. Respuesta rápida para hogares, comercios e industrias de Provincia de Buenos Aires y CABA."
         primaryCta={{ label: "Solicitar presupuesto", href: WHATSAPP_URL }}
         secondaryCta={{ label: "Ver servicios", href: "#servicios" }}
-        hint="Pasá el cursor para apagar el fuego"
-        hintTouch="Deslizá para apagar el fuego"
+        hint="Pasá el cursor de punta a punta para apagar el fuego"
+        hintTouch="Deslizá de punta a punta para apagar el fuego"
+        promo={{
+          badge: "Promo web",
+          title: "¡Fuego apagado! Ahora protegé lo tuyo.",
+          body: "Cotización sin cargo en el día, con retiro y entrega de tus matafuegos sin costo y equipos de reemplazo mientras están en el taller.",
+          cta: { label: "Quiero la promo", href: PROMO_WHATSAPP_URL },
+          note: "Hogares, comercios e industrias · Certificación IRAM",
+        }}
         headingFont="var(--font-barlow), sans-serif"
         accentFont="var(--font-barlow), sans-serif"
         bodyFont="var(--font-inter), system-ui, sans-serif"

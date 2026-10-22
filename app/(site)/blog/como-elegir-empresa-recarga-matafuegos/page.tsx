@@ -1,0 +1,274 @@
+import type { Metadata } from "next"
+import { JsonLd } from "@/components/json-ld"
+import { SiteFooter } from "@/components/site-footer"
+
+export const metadata: Metadata = {
+  title: "Cómo elegir empresa de recarga de matafuegos: 8 claves",
+  description: "Qué verificar antes de contratar la recarga de matafuegos: certificación IRAM 3517-2, etiqueta, factura, plazos y señales de alerta.",
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://matafuegospesse.com/blog/como-elegir-empresa-recarga-matafuegos"
+  },
+  openGraph: {
+    type: "article",
+    locale: "es_AR",
+    siteName: "Matafuegos Pesse",
+    title: "Cómo elegir empresa de recarga de matafuegos: 8 claves",
+    description: "Qué verificar antes de contratar la recarga de matafuegos: certificación IRAM 3517-2, etiqueta, factura, plazos y señales de alerta.",
+    url: "https://matafuegospesse.com/blog/como-elegir-empresa-recarga-matafuegos",
+    images: [
+      {
+        url: "https://matafuegospesse.com/og-image.jpg"
+      }
+    ]
+  }
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://matafuegospesse.com/blog/como-elegir-empresa-recarga-matafuegos#article",
+      headline: "Cómo elegir una empresa de recarga de matafuegos (y evitar estafas)",
+      description: "Qué verificar antes de contratar la recarga de matafuegos: certificación, etiqueta, factura, plazos y señales de alerta.",
+      datePublished: "2026-10-14",
+      dateModified: "2026-10-14",
+      inLanguage: "es-AR",
+      author: {
+        "@type": "Person",
+        "@id": "https://matafuegospesse.com/nosotros/juan-changala/#person",
+        name: "Juan Changala",
+        url: "https://matafuegospesse.com/nosotros/juan-changala/"
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Matafuegos Pesse",
+        url: "https://matafuegospesse.com"
+      },
+      mainEntityOfPage: "https://matafuegospesse.com/blog/como-elegir-empresa-recarga-matafuegos",
+      image: "https://matafuegospesse.com/og-image.jpg"
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: "https://matafuegospesse.com/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: "https://matafuegospesse.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Cómo elegir empresa de recarga"
+        }
+      ]
+    }
+  ]
+}
+
+export default function Page() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <JsonLd data={jsonLd} />
+      <main className="article-wrap">
+        <div className="breadcrumb"><a href="/">Inicio</a>{" › "}<a href="/blog/">Blog</a>{" › Guía"}</div>
+        <span className="article-tag">Guía</span>
+        <h1>Cómo elegir una empresa de recarga de matafuegos (y evitar estafas)</h1>
+        <p className="article-meta">
+          {"14 de octubre de 2026 · Por "}
+          <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
+          , Lic. en Higiene y Seguridad en el Trabajo · 6 min de lectura
+        </p>
+        <div className="highlight-box">
+          <strong>En resumen</strong>
+          Antes de contratar, verificá que la empresa tenga su servicio certificado según IRAM 3517-2 o su habilitación vigente, que deje una etiqueta con fecha, empresa y próximo vencimiento, que emita factura a su nombre, que coordine la visita con el responsable del lugar y que te diga por escrito cuánto tarda y qué pasa con tus equipos mientras tanto.
+        </div>
+        <h2>Por qué importa a quién le encargás la recarga</h2>
+        <p>
+          {"Un matafuego con la etiqueta de una empresa no certificada es, a efectos prácticos, un matafuego sin mantenimiento. Ante una inspección de la ART, una habilitación municipal o un siniestro, lo que vale es la documentación del servicio. La "}
+          <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/17612/norma.htm" rel="noopener">
+            Ley 19.587
+          </a>
+          {" y el "}
+          <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/32030/texact.htm" rel="noopener">
+            Decreto 351/79
+          </a>
+          {" ponen la responsabilidad en el empleador: si el equipo falla o la documentación no es válida, el problema es tuyo, no de quien lo recargó. Repasá los plazos en "}
+          <a href="/blog/cada-cuanto-revisar-matafuegos">¿Cada cuánto hay que revisar los matafuegos?</a>
+        </p>
+        <h2>Las 8 claves para comparar empresas</h2>
+        <h3>1. ¿Tiene certificación o habilitación vigente?</h3>
+        <p>
+          {"Pedí el número de certificado del servicio (por ejemplo, según IRAM 3517-2) o el de habilitación, y verificalo. Una empresa seria lo da en el momento; si dice que \"lo manda después\", es una señal de alerta."}
+        </p>
+        <h3>2. ¿Trabaja según la norma IRAM 3517-2?</h3>
+        <p>
+          Es la norma que define cómo se controla, mantiene y recarga un extintor. Si en el presupuesto o en la etiqueta no aparece ninguna norma, preguntá por qué.
+        </p>
+        <h3>3. ¿Qué datos deja en la etiqueta?</h3>
+        <p>
+          {"La etiqueta de servicio tiene que indicar fecha, empresa, sus datos de registro y el próximo vencimiento. Una etiqueta genérica o sin datos no sirve frente a una inspección. Mirá "}
+          <a href="/blog/matafuego-vencido-puede-explotar">
+            qué pasa cuando un matafuego no recibe el mantenimiento correcto
+          </a>
+          .
+        </p>
+        <h3>4. ¿Hace la prueba hidráulica y el cambio de polvo?</h3>
+        <p>
+          {"La revisión anual no alcanza: el cilindro necesita prueba hidráulica cada 5 años y el polvo se cambia cada 10. Preguntá si la empresa lo hace y cómo te avisa los vencimientos. Más en "}
+          <a href="/blog/cambio-polvo-quimico-seco-cada-10-anos">
+            por qué hay que cambiar el polvo cada 10 años
+          </a>
+          .
+        </p>
+        <h3>5. ¿Qué pasa con tus equipos mientras están en el taller?</h3>
+        <p>
+          Algunos trabajos se hacen en taller y llevan uno o dos días hábiles. Preguntá si dejan equipos de reemplazo para que el lugar no quede sin cobertura.
+        </p>
+        <h3>6. ¿Emite factura a su nombre?</h3>
+        <p>
+          La factura tiene que estar a nombre de la misma empresa que figura en la etiqueta y en el certificado. Un remito sin datos o una factura de otra razón social es motivo para no seguir.
+        </p>
+        <h3>7. ¿Coordina la visita con el responsable?</h3>
+        <p>
+          {"Una empresa legítima acuerda fecha y hora con el dueño o el administrador. Las estafas empiezan con alguien que se presenta sin aviso y habla con un empleado. Te lo contamos en "}
+          <a href="/blog/estafa-matafuegos-retiran-cobran-de-mas">la estafa del matafuego</a>
+          {"; también hay casos documentados en la prensa, como el del "}
+          <a href="https://www.lacapital.com.ar/suscriptores/el-loco-del-matafuego-un-estafador-que-ronda-los-negocios-del-microcentro-n10108541.html" rel="noopener">
+            {"\"loco del matafuego\" que publicó La Capital"}
+          </a>
+          .
+        </p>
+        <h3>8. ¿Te asesora o solo vende?</h3>
+        <p>
+          {"La cantidad y el tipo de matafuegos dependen de la superficie y de la actividad. Una buena empresa te dice si te falta un equipo, si el que tenés no corresponde al riesgo o si está mal ubicado. Ver "}
+          <a href="/blog/tipos-de-matafuegos">tipos de matafuegos</a>
+          .
+        </p>
+        <h2>Checklist para comparar presupuestos</h2>
+        <table>
+          <thead><tr><th>Criterio</th><th>Qué pedir</th><th>Señal de alerta</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Certificación</td>
+              <td>Número de certificado o habilitación</td>
+              <td>{"No lo da o \"lo manda después\""}</td>
+            </tr>
+            <tr><td>Norma</td><td>IRAM 3517-2</td><td>No menciona ninguna norma</td></tr>
+            <tr>
+              <td>Etiqueta</td>
+              <td>Fecha, empresa, registro y vencimiento</td>
+              <td>Etiqueta genérica o sin datos</td>
+            </tr>
+            <tr>
+              <td>Prueba hidráulica</td>
+              <td>Cada 5 años, con re-timbrado</td>
+              <td>{"\"No hace falta\""}</td>
+            </tr>
+            <tr><td>Cambio de polvo</td><td>Cada 10 años</td><td>No lo ofrece</td></tr>
+            <tr>
+              <td>Reemplazo temporal</td>
+              <td>Equipos mientras están en taller</td>
+              <td>Te deja sin matafuegos</td>
+            </tr>
+            <tr>
+              <td>Factura</td>
+              <td>A nombre de la empresa del certificado</td>
+              <td>Remito sin datos u otra razón social</td>
+            </tr>
+            <tr><td>Visita</td><td>Coordinada con el responsable</td><td>Se presentan sin aviso</td></tr>
+          </tbody>
+        </table>
+        <h2>Cómo trabajamos en Matafuegos Pesse</h2>
+        <p>
+          {"Nuestro servicio de control, mantenimiento y recarga está certificado según IRAM 3517-2:2005 (certificado N.º DC-P-M400-001.1; ver "}
+          <a href="/certificaciones/">certificaciones</a>
+          {"). Coordinamos cada visita con el responsable del lugar, retiramos y entregamos los equipos sin cargo y, mientras están en el taller, dejamos equipos de reemplazo. Tenemos habilitación provincial DPS N.º 330 y habilitación en CABA (N.º 4927135). Conocé el detalle del "}
+          <a href="/recarga-de-matafuegos/">servicio de recarga</a>
+          .
+        </p>
+        <h2>Preguntas frecuentes</h2>
+        <div className="faq">
+          <details>
+            <summary>¿La recarga es obligatoria aunque no haya usado el matafuego?</summary>
+            <p>
+              Sí. La revisión es anual aunque el equipo nunca se haya usado: el polvo se compacta, la presión puede bajar y la etiqueta vencida es motivo de observación.
+            </p>
+          </details>
+          <details>
+            <summary>¿Puedo cambiar de empresa de mantenimiento?</summary>
+            <p>
+              Sí. La nueva empresa revisa los equipos, verifica las fechas de prueba hidráulica y cambio de polvo, y deja su propia etiqueta de servicio.
+            </p>
+          </details>
+          <details>
+            <summary>¿Cuánto cuesta la recarga?</summary>
+            <p>
+              Depende del tipo de agente, la capacidad en kilos, la cantidad de equipos y si corresponde prueba hidráulica o cambio de polvo. Desconfiá de un precio por equipo muy por debajo del mercado: suele no incluir lo que exige la norma.
+            </p>
+          </details>
+        </div>
+        <div className="cta-box">
+          <h3>Pedinos el número de certificado antes de contratar</h3>
+          <p>Te cotizamos sin cargo y te mandamos la documentación.</p>
+          <a href={"https://api.whatsapp.com/send?phone=+541121685408&text=Hola!%20Quiero%20cotizar%20la%20recarga%20de%20matafuegos."} className="btn-red">
+            Consultanos por WhatsApp
+          </a>
+        </div>
+      </main>
+      <SiteFooter />
+    </>
+  )
+}
+
+// Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
+const css = `:root { --black:#111111; --red:#C41E2A; --red-dark:#900E18; --white:#FFFFFF; --gray-bg:#F5F6F8; --gray-mid:#737880; --gray-border:#DEE1E6; --max-w:1200px; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-inter), system-ui, sans-serif; color: var(--black); background: var(--white); line-height: 1.7; }
+h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line-height: 1.15; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+.article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 80px; }
+.article-tag { display: inline-block; background: var(--red); color: var(--white); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 2px; margin-bottom: 20px; }
+.article-wrap h1 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 16px; }
+.article-meta { font-size: 13px; color: var(--gray-mid); margin-bottom: 36px; border-bottom: 1px solid var(--gray-border); padding-bottom: 20px; }
+.article-wrap h2 { font-size: 28px; margin: 40px 0 14px; }
+.article-wrap p { margin-bottom: 18px; font-size: 16px; }
+.article-wrap ul, .article-wrap ol { margin: 0 0 18px 24px; font-size: 16px; }
+.article-wrap li { margin-bottom: 8px; }
+.highlight-box { background: var(--gray-bg); border-left: 4px solid var(--red); padding: 18px 20px; margin: 28px 0; border-radius: 0 4px 4px 0; }
+.highlight-box strong { display: block; font-size: 15px; margin-bottom: 6px; }
+
+table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 15px; }
+th { background: var(--black); color: var(--white); text-align: left; padding: 10px 14px; font-family: var(--font-barlow), sans-serif; font-size: 15px; }
+td { padding: 10px 14px; border-bottom: 1px solid var(--gray-border); }
+tr:nth-child(even) td { background: var(--gray-bg); }
+
+.cta-box { background: var(--black); color: var(--white); padding: 32px; border-radius: 6px; margin: 48px 0 0; text-align: center; }
+.cta-box h3 { font-size: 26px; color: var(--white); margin-bottom: 10px; }
+.cta-box p { color: #8A9099; margin-bottom: 20px; }
+.btn-red { display: inline-block; background: var(--red); color: var(--white); padding: 12px 28px; border-radius: 4px; font-weight: 600; text-decoration: none; font-size: 15px; }
+.btn-red:hover { background: var(--red-dark); }
+
+.breadcrumb { font-size: 13px; color: var(--gray-mid); margin-bottom: 24px; }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); }
+
+  .faq details { border-bottom: 1px solid var(--gray-border); padding: 14px 0; }
+.faq summary { font-weight: 600; cursor: pointer; font-size: 16px; }
+.faq details p { margin: 10px 0 0; }
+.author-box { display: flex; gap: 18px; align-items: center; background: var(--gray-bg); padding: 20px; border-radius: 6px; margin: 32px 0; }
+.author-box img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.author-box p { margin: 0; font-size: 15px; }
+.article-wrap a { color: var(--red); }
+.article-wrap .btn-red { color: var(--white); }
+`

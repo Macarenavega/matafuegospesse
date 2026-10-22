@@ -1,0 +1,276 @@
+import type { Metadata } from "next"
+import { JsonLd } from "@/components/json-ld"
+import { SiteFooter } from "@/components/site-footer"
+
+export const metadata: Metadata = {
+  title: "Seguridad e Higiene para empresas en Buenos Aires | Pesse",
+  description: "Higiene y Seguridad en el Trabajo para empresas: legajos técnicos, planes de evacuación, capacitaciones y auditorías (Ley 19.587). Provincia y CABA.",
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://matafuegospesse.com/seguridad-e-higiene/"
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_AR",
+    siteName: "Matafuegos Pesse",
+    title: "Seguridad e Higiene para empresas en Buenos Aires | Pesse",
+    description: "Higiene y Seguridad en el Trabajo para empresas: legajos técnicos, planes de evacuación, capacitaciones y auditorías (Ley 19.587). Provincia y CABA.",
+    url: "https://matafuegospesse.com/seguridad-e-higiene/",
+    images: [
+      {
+        url: "https://matafuegospesse.com/og-image.jpg"
+      }
+    ]
+  }
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://matafuegospesse.com/seguridad-e-higiene/#servicio",
+      name: "Asesoramiento en Higiene y Seguridad en el Trabajo",
+      serviceType: "Higiene y Seguridad en el Trabajo",
+      provider: {
+        "@id": "https://matafuegospesse.com/#business"
+      },
+      url: "https://matafuegospesse.com/seguridad-e-higiene/",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType: "Empresas, comercios e industrias"
+      },
+      areaServed: [
+        {
+          "@type": "AdministrativeArea",
+          name: "Provincia de Buenos Aires"
+        },
+        {
+          "@type": "AdministrativeArea",
+          name: "Ciudad Autónoma de Buenos Aires"
+        }
+      ],
+      employee: {
+        "@id": "https://matafuegospesse.com/nosotros/juan-changala/#person"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: "https://matafuegospesse.com/"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Seguridad e Higiene"
+        }
+      ]
+    }
+  ]
+}
+
+export default function Page() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <JsonLd data={jsonLd} />
+      <main className="article-wrap">
+        <div className="breadcrumb"><a href="/">Inicio</a>{" › Seguridad e Higiene"}</div>
+        <span className="article-tag">Servicio</span>
+        <h1>Seguridad e Higiene para empresas</h1>
+        <p>
+          <strong>
+            {"Ayudamos a las empresas a cumplir la "}
+            <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/17612/norma.htm" rel="noopener">
+              Ley 19.587 de Higiene y Seguridad en el Trabajo
+            </a>
+            {" y su "}
+            <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/32030/texact.htm" rel="noopener">
+              Decreto reglamentario 351/79
+            </a>
+            .
+          </strong>
+          {" Elaboramos legajos técnicos para habilitaciones, planes de evacuación y lucha contra incendios, matrices de riesgo, auditorías de cumplimiento y capacitaciones del personal. El área está a cargo de Juan Changala, Licenciado en Higiene y Seguridad en el Trabajo (matrícula LHS-001107 PBA)."}
+        </p>
+        <p>
+          <a href={"https://api.whatsapp.com/send?phone=+541121685408&text=Hola!%20Necesito%20asesoramiento%20en%20Seguridad%20e%20Higiene."} className="btn-red">
+            Pedir asesoramiento por WhatsApp
+          </a>
+        </p>
+        <h2>Qué hacemos</h2>
+        <ul>
+          <li><strong>Legajos técnicos</strong>{" para habilitaciones municipales"}</li>
+          <li><strong>Planes de evacuación</strong>{" y de lucha contra incendios, con simulacros"}</li>
+          <li><strong>Auditorías de cumplimiento normativo</strong>{" (Ley 19.587 y Decreto 351/79)"}</li>
+          <li>
+            <strong>Capacitación del personal</strong>
+            {" en prevención de incendios y uso de extintores, en las instalaciones del cliente"}
+          </li>
+          <li><strong>Matrices de riesgo</strong>{" y procedimientos de emergencia"}</li>
+        </ul>
+        <h2>Cómo trabajamos</h2>
+        <ol>
+          <li>
+            <strong>Relevamiento:</strong>
+            {" visitamos el establecimiento y evaluamos actividad, superficie, carga de fuego, salidas, equipos y documentación existente."}
+          </li>
+          <li>
+            <strong>Informe:</strong>
+            {" te entregamos qué falta, qué riesgo implica y en qué orden conviene resolverlo."}
+          </li>
+          <li>
+            <strong>Implementación:</strong>
+            {" confeccionamos la documentación, capacitamos al personal y, si hace falta, proveemos matafuegos, señalización y redes contra incendio."}
+          </li>
+          <li>
+            <strong>Seguimiento:</strong>
+            {" mantenemos al día vencimientos, simulacros y capacitaciones."}
+          </li>
+        </ol>
+        <h2>El marco legal</h2>
+        <table>
+          <thead><tr><th>Norma</th><th>Qué regula</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/15000-19999/17612/norma.htm" rel="noopener">
+                  Ley 19.587
+                </a>
+              </td>
+              <td>
+                Ley marco de Higiene y Seguridad en el Trabajo: obligaciones del empleador, incluida la prevención y lucha contra incendios
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/30000-34999/32030/texact.htm" rel="noopener">
+                  Decreto 351/79
+                </a>
+              </td>
+              <td>
+                Reglamentación de la Ley 19.587: protección contra incendios, cantidad y ubicación de matafuegos, señalización y capacitación
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/27971/texact.htm" rel="noopener">
+                  Ley 24.557
+                </a>
+              </td>
+              <td>Riesgos del Trabajo: el sistema de ART, que inspecciona y notifica incumplimientos</td>
+            </tr>
+            <tr>
+              <td>Decreto 1338/96</td>
+              <td>Servicios de Higiene y Seguridad en el Trabajo de las empresas</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          {"Ver también "}
+          <a href="/blog/normativa-matafuegos-argentina">Normativa de matafuegos en Argentina</a>
+          .
+        </p>
+        <h2>Por qué combinar Seguridad e Higiene y matafuegos</h2>
+        <p>
+          {"La mayoría de las observaciones de una inspección tienen que ver con la protección contra incendios: matafuegos vencidos o mal ubicados, falta de señalización o personal sin capacitar. Al tener todo en una misma empresa, el relevamiento de riesgos y la solución quedan coordinados: el plan de evacuación coincide con la ubicación real de los equipos, y los vencimientos se controlan juntos. Mirá cómo lo resolvió "}
+          <a href="/blog/buenas-practicas-contra-incendios-en-empresas">
+            una empresa con su brigada capacitada
+          </a>
+          .
+        </p>
+        <h2>Preguntas frecuentes</h2>
+        <div className="faq">
+          <details>
+            <summary>¿Qué es el legajo técnico de Higiene y Seguridad?</summary>
+            <p>
+              Es la carpeta que documenta las condiciones de seguridad de un establecimiento: relevamiento de riesgos, plano con salidas y matafuegos, plan de evacuación, carga de fuego y las medidas adoptadas. Los municipios lo suelen pedir para la habilitación comercial o industrial.
+            </p>
+          </details>
+          <details>
+            <summary>¿Qué incluye un plan de evacuación?</summary>
+            <p>
+              Las rutas de salida y los puntos de reunión, los roles del personal durante una emergencia, los teléfonos de emergencia, la ubicación de matafuegos y señalización, y el programa de simulacros.
+            </p>
+          </details>
+          <details>
+            <summary>¿Pueden encargarse también de los matafuegos y la señalización?</summary>
+            <p>
+              Sí. Es la ventaja de trabajar con una sola empresa: el mismo equipo que releva los riesgos provee, recarga y señaliza los matafuegos y, si hace falta, diseña la red contra incendio.
+            </p>
+          </details>
+          <details>
+            <summary>¿Trabajan en CABA?</summary>
+            <p>
+              Sí. Con base en Merlo, brindamos servicio en toda la Provincia de Buenos Aires y en la Ciudad Autónoma de Buenos Aires.
+            </p>
+          </details>
+        </div>
+        <div className="author-box">
+          <img src="/img/juan-changala.webp" width={480} height={480} alt="Juan Changala" loading="lazy" />
+          <p>
+            <strong>{"Revisado por "}<a href="/nosotros/juan-changala/">Juan Changala</a></strong>
+            <br />
+            Licenciado en Higiene y Seguridad en el Trabajo · Matrícula LHS-001107 PBA
+          </p>
+        </div>
+        <div className="cta-box">
+          <h3>¿Tu empresa está en regla?</h3>
+          <p>
+            Contanos actividad, superficie y cantidad de personal, y te decimos qué necesitás. Sin compromiso.
+          </p>
+          <a href={"https://api.whatsapp.com/send?phone=+541121685408&text=Hola!%20Necesito%20asesoramiento%20en%20Seguridad%20e%20Higiene."} className="btn-red">
+            Consultanos por WhatsApp
+          </a>
+        </div>
+      </main>
+      <SiteFooter />
+    </>
+  )
+}
+
+// Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
+const css = `:root { --black:#111111; --red:#C41E2A; --red-dark:#900E18; --white:#FFFFFF; --gray-bg:#F5F6F8; --gray-mid:#737880; --gray-border:#DEE1E6; --max-w:1200px; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-inter), system-ui, sans-serif; color: var(--black); background: var(--white); line-height: 1.7; }
+h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line-height: 1.15; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+.article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 80px; }
+.article-tag { display: inline-block; background: var(--red); color: var(--white); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 2px; margin-bottom: 20px; }
+.article-wrap h1 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 16px; }
+.article-meta { font-size: 13px; color: var(--gray-mid); margin-bottom: 36px; border-bottom: 1px solid var(--gray-border); padding-bottom: 20px; }
+.article-wrap h2 { font-size: 28px; margin: 40px 0 14px; }
+.article-wrap p { margin-bottom: 18px; font-size: 16px; }
+.article-wrap ul, .article-wrap ol { margin: 0 0 18px 24px; font-size: 16px; }
+.article-wrap li { margin-bottom: 8px; }
+.highlight-box { background: var(--gray-bg); border-left: 4px solid var(--red); padding: 18px 20px; margin: 28px 0; border-radius: 0 4px 4px 0; }
+.highlight-box strong { display: block; font-size: 15px; margin-bottom: 6px; }
+
+table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 15px; }
+th { background: var(--black); color: var(--white); text-align: left; padding: 10px 14px; font-family: var(--font-barlow), sans-serif; font-size: 15px; }
+td { padding: 10px 14px; border-bottom: 1px solid var(--gray-border); }
+tr:nth-child(even) td { background: var(--gray-bg); }
+
+.cta-box { background: var(--black); color: var(--white); padding: 32px; border-radius: 6px; margin: 48px 0 0; text-align: center; }
+.cta-box h3 { font-size: 26px; color: var(--white); margin-bottom: 10px; }
+.cta-box p { color: #8A9099; margin-bottom: 20px; }
+.btn-red { display: inline-block; background: var(--red); color: var(--white); padding: 12px 28px; border-radius: 4px; font-weight: 600; text-decoration: none; font-size: 15px; }
+.btn-red:hover { background: var(--red-dark); }
+
+.breadcrumb { font-size: 13px; color: var(--gray-mid); margin-bottom: 24px; }
+.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--black); }
+
+  .faq details { border-bottom: 1px solid var(--gray-border); padding: 14px 0; }
+.faq summary { font-weight: 600; cursor: pointer; font-size: 16px; }
+.faq details p { margin: 10px 0 0; }
+.author-box { display: flex; gap: 18px; align-items: center; background: var(--gray-bg); padding: 20px; border-radius: 6px; margin: 32px 0; }
+.author-box img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.author-box p { margin: 0; font-size: 15px; }
+.article-wrap a { color: var(--red); }
+.article-wrap .btn-red { color: var(--white); }
+`

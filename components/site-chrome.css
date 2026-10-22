@@ -1,0 +1,21 @@
+/* Menu and inner-page footer: shared by every page. Colours come from each page's :root tokens. */
+.site-nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--gray-border); }
+.site-nav .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.site-nav .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.site-nav .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.site-nav .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-mid); text-decoration: none; transition: color .15s; }
+.site-nav .nav-links a:hover, .site-nav .nav-links a[aria-current="page"] { color: var(--black); }
+.site-nav .nav-cta { background: var(--red) !important; color: var(--white) !important; padding: 8px 20px; border-radius: 4px; font-weight: 600 !important; }
+.site-nav .nav-cta:hover { background: var(--red-dark) !important; }
+
+/* Below 1180px the full menu doesn't fit in one row: it drops under the logo and scrolls sideways */
+@media (max-width: 1180px) {
+  .site-nav .nav-inner { height: auto; flex-wrap: wrap; row-gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+  .site-nav .nav-links { display: flex; width: 100%; overflow-x: auto; gap: 18px; white-space: nowrap; padding-bottom: 4px; scrollbar-width: none; }
+}
+
+.site-footer { background: var(--black); padding: 32px 24px; text-align: center; }
+.site-footer .footer-copy { font-size: 13px; color: #555; margin-top: 12px; }
+.site-footer .footer-nav { display: flex; gap: 20px; justify-content: center; list-style: none; flex-wrap: wrap; }
+.site-footer .footer-nav a { font-size: 13px; color: #555; text-decoration: none; }
+.site-footer .footer-nav a:hover { color: var(--white); }

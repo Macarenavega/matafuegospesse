@@ -755,7 +755,6 @@
       section { padding: 56px 0; }
       .services-grid { grid-template-columns: 1fr; }
       .diff-grid { grid-template-columns: 1fr; gap: 20px; }
-      .nav-inner{height:auto;flex-wrap:wrap;row-gap:8px;padding-top:10px;padding-bottom:10px}.nav-links{display:flex;width:100%;overflow-x:auto;gap:18px;white-space:nowrap;padding-bottom:4px;scrollbar-width:none}
       .hero-left { padding: 48px 24px; }
     }
 
@@ -769,6 +768,7 @@
     .faq-item p { margin-top: 10px; color: #3A4048; }
     .faq-item a { color: var(--red); font-weight: 600; }
     .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+    @media (max-width: 1080px) { .nav-inner{height:auto;flex-wrap:wrap;row-gap:8px;padding-top:10px;padding-bottom:10px}.nav-links{display:flex;width:100%;overflow-x:auto;gap:18px;white-space:nowrap;padding-bottom:4px;scrollbar-width:none} }
   </style>
 </head>
 <body>
@@ -841,12 +841,12 @@
     <div class="services-grid">
       <div class="service-card">
         <span class="service-icon">🧯</span>
-        <h3 class="service-title">Extintores — Venta</h3>
+        <h3 class="service-title">Venta de extintores</h3>
         <p class="service-desc">Extintores para todo tipo de fuego y superficie. Stock permanente, entrega en el día para Zona Oeste. <a href="/matafuego-para-auto/" style="color:var(--red);font-weight:600">¿Para el auto? Ver matafuegos apto VTV →</a></p>
       </div>
       <div class="service-card">
         <span class="service-icon">🔧</span>
-        <h3 class="service-title">Extintores — Mantenimiento</h3>
+        <h3 class="service-title">Mantenimiento de extintores</h3>
         <p class="service-desc">Recarga, prueba hidráulica y certificación según norma IRAM 3517. Retiro y entrega sin cargo, con equipos de reemplazo. <a href="/recarga-de-matafuegos/" style="color:var(--red);font-weight:600">Ver servicio →</a></p>
       </div>
       <div class="service-card">
@@ -1055,8 +1055,8 @@
           <label for="f-servicio" class="sr-only">Servicio</label>
           <select id="f-servicio" name="servicio" class="form-input">
             <option value="" disabled selected>¿Qué necesitás?</option>
-            <option>Extintores — Venta</option>
-            <option>Extintores — Mantenimiento</option>
+            <option>Venta de extintores</option>
+            <option>Mantenimiento de extintores</option>
             <option>Mangueras y gabinetes</option>
             <option>Señalización</option>
             <option>Elementos de protección personal</option>

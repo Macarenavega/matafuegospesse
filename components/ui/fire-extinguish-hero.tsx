@@ -1161,7 +1161,7 @@ export interface FireHeroLink {
   href: string
 }
 
-export interface FirePromo {
+export interface FireOutCard {
   badge?: string
   title: string
   body?: string
@@ -1227,8 +1227,8 @@ export interface FireExtinguishHeroProps {
   hintTouch?: string
   /** Shown over the fire once it is out (empty to hide). */
   extinguishedMessage?: string
-  /** Offer revealed where the fire was, once it is out. Replaces the message. */
-  promo?: FirePromo
+  /** Card revealed where the fire was, once it is out. Replaces the message. */
+  outCard?: FireOutCard
   /** Visually hidden description of the animation, for screen readers. */
   visualLabel?: string
 
@@ -1341,18 +1341,18 @@ const CSS = `
 .fh-root[data-out="1"] .fh-out{opacity:1;visibility:visible;transition:opacity .9s ease .3s,visibility 0s,transform .9s cubic-bezier(.2,.7,.2,1) .3s}
 .fh-outmsg{margin:0;font-family:var(--fh-accent);font-style:var(--fh-accent-style,italic);font-size:clamp(28px,min(4.2cqw,7cqh),56px);line-height:1.05;
   letter-spacing:-.02em;color:var(--fh-fg);text-wrap:balance}
-.fh-out-promo{width:min(520px,calc(100cqw - 32px))}
+.fh-out-card{width:min(520px,calc(100cqw - 32px))}
 .fh-root[data-out="1"] .fh-cssfire{opacity:0}
-.fh-promo{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;padding:clamp(22px,3cqw,34px) clamp(20px,3cqw,36px);
+.fh-card{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;padding:clamp(22px,3cqw,34px) clamp(20px,3cqw,36px);
   border:1px solid color-mix(in srgb,var(--fh-acc) 55%,transparent);border-radius:20px;
   background:color-mix(in srgb,var(--fh-bg) 82%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   box-shadow:0 24px 60px -24px color-mix(in srgb,var(--fh-acc) 45%,transparent)}
-.fh-promo-badge{margin:0;padding:6px 12px;border-radius:999px;background:var(--fh-acc);color:#fff;font-size:11px;font-weight:700;
+.fh-card-badge{margin:0;padding:6px 12px;border-radius:999px;background:var(--fh-acc);color:#fff;font-size:11px;font-weight:700;
   letter-spacing:.14em;text-transform:uppercase}
-.fh-promo-title{margin:0;font-family:var(--fh-head);font-weight:600;font-size:clamp(28px,min(4cqw,7cqh),48px);line-height:1;letter-spacing:-.02em;text-wrap:balance}
-.fh-promo-body{margin:0;font-size:clamp(14.5px,1.05cqw,16px);line-height:1.5;opacity:.82;text-wrap:pretty;max-width:42ch}
-.fh-promo .fh-btn{margin-top:4px}
-.fh-promo-note{margin:0;font-size:11.5px;opacity:.5}
+.fh-card-title{margin:0;font-family:var(--fh-head);font-weight:600;font-size:clamp(28px,min(4cqw,7cqh),48px);line-height:1;letter-spacing:-.02em;text-wrap:balance}
+.fh-card-body{margin:0;font-size:clamp(14.5px,1.05cqw,16px);line-height:1.5;opacity:.82;text-wrap:pretty;max-width:42ch}
+.fh-card .fh-btn{margin-top:4px}
+.fh-card-note{margin:0;font-size:11.5px;opacity:.5}
 .fh-spacer{flex:1 1 auto;min-height:0}
 .fh-content{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);align-items:end;
   gap:clamp(24px,4cqw,72px);padding:0 clamp(20px,3.2cqw,48px) clamp(28px,3.4cqw,52px)}
@@ -1478,7 +1478,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
     hint = DEFAULTS.hint,
     hintTouch = DEFAULTS.hintTouch,
     extinguishedMessage = DEFAULTS.extinguishedMessage,
-    promo,
+    outCard,
     visualLabel = DEFAULTS.visualLabel,
     background = DEFAULTS.background,
     textColor = DEFAULTS.textColor,
@@ -1577,8 +1577,8 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
     }
     const outEl = outRef.current
     if (outEl) {
-      // the offer is the payoff, so it shows even in a short hero, just higher up
-      outEl.style.display = roomy || outEl.dataset.promo ? "" : "none"
+      // the card is the payoff, so it shows even in a short hero, just higher up
+      outEl.style.display = roomy || outEl.dataset.card ? "" : "none"
       outEl.style.left = w / 2 + "px"
       outEl.style.top = Math.max(band.top + outEl.offsetHeight / 2, rect.y + rect.h * 0.55) + "px"
     }
@@ -1757,7 +1757,7 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
       ref={rootRef}
       className={"fh-root" + (className ? " " + className : "")}
       style={{ ...vars, ...style }}
-      data-out={isOut && (promo || extinguishedMessage) ? "1" : undefined}
+      data-out={isOut && (outCard || extinguishedMessage) ? "1" : undefined}
     >
       <style>{CSS}</style>
       <div ref={stageRef} className="fh-stage" aria-hidden="true">
@@ -1801,20 +1801,20 @@ export default function FireExtinguishHero(props: FireExtinguishHeroProps) {
         </div>
       ) : null}
 
-      {promo ? (
-        <div ref={outRef} className="fh-out fh-out-promo" data-promo="1" aria-live="polite">
+      {outCard ? (
+        <div ref={outRef} className="fh-out fh-out-card" data-card="1" aria-live="polite">
           {isOut ? (
-            <div className="fh-promo">
-              {promo.badge ? <p className="fh-promo-badge">{promo.badge}</p> : null}
-              <p className="fh-promo-title">{promo.title}</p>
-              {promo.body ? <p className="fh-promo-body">{promo.body}</p> : null}
-              {promo.cta && promo.cta.label ? (
-                <a className="fh-btn" href={promo.cta.href}>
-                  {promo.cta.label}
+            <div className="fh-card">
+              {outCard.badge ? <p className="fh-card-badge">{outCard.badge}</p> : null}
+              <p className="fh-card-title">{outCard.title}</p>
+              {outCard.body ? <p className="fh-card-body">{outCard.body}</p> : null}
+              {outCard.cta && outCard.cta.label ? (
+                <a className="fh-btn" href={outCard.cta.href}>
+                  {outCard.cta.label}
                   <Arrow />
                 </a>
               ) : null}
-              {promo.note ? <p className="fh-promo-note">{promo.note}</p> : null}
+              {outCard.note ? <p className="fh-card-note">{outCard.note}</p> : null}
             </div>
           ) : null}
         </div>

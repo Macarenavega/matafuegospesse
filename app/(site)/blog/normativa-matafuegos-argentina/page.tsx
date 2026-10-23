@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "Normativa de matafuegos en Argentina | Matafuegos Pesse",
@@ -25,7 +26,7 @@ const jsonLd = {
       "@type": "Article",
       headline: "Normativa de matafuegos en Argentina: qué dice la ley",
       description: "Ley 19587, Decreto 351/79, normas IRAM y resoluciones SRT. Todo lo que una empresa argentina debe cumplir.",
-      datePublished: "2026-09-02",
+      datePublished: "2026-05-13",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -87,7 +88,7 @@ export default function Page() {
         <span className="article-tag">Normativa</span>
         <h1>Normativa de matafuegos en Argentina: qué dice la ley</h1>
         <p className="article-meta">
-          {"2 de septiembre de 2026 · Por "}
+          {"13 de mayo de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 6 min de lectura
         </p>
@@ -180,7 +181,7 @@ export default function Page() {
           <li><strong>Responsabilidad penal del empleador</strong>{" si hay lesionados o fallecidos"}</li>
         </ul>
         <div className="highlight-box">
-          <strong>📋 Lista de verificación rápida para tu empresa</strong>
+          <strong><NoteIcon name="list" />Lista de verificación rápida para tu empresa</strong>
           <ul className="checklist">
             <li>Tengo al menos 1 matafuego cada 200 m²</li>
             <li>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
+import { WHATSAPP_URL } from "@/lib/site"
 import "@/components/inner-page.css"
 
 export const metadata: Metadata = {
@@ -129,14 +130,14 @@ export default function Page() {
             </div>
           </a>
           {" "}
-          <a href="/blog/oblea-tarjeta-matafuego" className="post-card">
-            <span className="post-card-tag tag-guia">Guía</span>
+          <a href="/blog/estafa-matafuegos-retiran-cobran-de-mas" className="post-card">
+            <span className="post-card-tag tag-alerta">Alerta</span>
             <div className="post-card-body">
-              <h2>Oblea y tarjeta del matafuego: qué son y cómo verificarlas</h2>
+              <h2>Cuidado: la estafa del matafuego que ya afectó a comerciantes en todo el país</h2>
               <p>
-                Qué datos tiene que tener la etiqueta, qué es la tarjeta de CABA y cómo comprobar en el registro oficial que la empresa está habilitada.
+                Entran a tu local, retiran los matafuegos con cualquier excusa y después cobran lo que quieren bajo presión. Así funciona la estafa y cómo no caer.
               </p>
-              <div className="post-meta">14 de octubre de 2026 · 5 min de lectura</div>
+              <div className="post-meta">30 de septiembre de 2026 · 4 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -148,7 +149,7 @@ export default function Page() {
               <p>
                 Certificación, etiqueta, factura, plazos y señales de alerta: las 8 claves para comparar presupuestos y no caer en una estafa.
               </p>
-              <div className="post-meta">14 de octubre de 2026 · 6 min de lectura</div>
+              <div className="post-meta">16 de septiembre de 2026 · 6 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -160,7 +161,7 @@ export default function Page() {
               <p>
                 La normativa IRAM y ART establece plazos claros. Incumplirlos puede invalidar tu seguro y generar multas. Acá te explicamos los ciclos obligatorios.
               </p>
-              <div className="post-meta">18 de septiembre de 2026 · 4 min de lectura</div>
+              <div className="post-meta">2 de septiembre de 2026 · 4 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -172,7 +173,7 @@ export default function Page() {
               <p>
                 Agua, polvo, CO₂, halón… elegir mal puede empeorar un incendio. Esta guía explica qué tipo corresponde según el tipo de fuego y la actividad de tu empresa.
               </p>
-              <div className="post-meta">10 de septiembre de 2026 · 5 min de lectura</div>
+              <div className="post-meta">19 de agosto de 2026 · 5 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -184,7 +185,7 @@ export default function Page() {
               <p>
                 Ramón se despertó a la 1am con su cocina en llamas. Tenía un extintor detrás de la puerta. Esta es la historia de los veinte segundos que salvaron su casa en Morón.
               </p>
-              <div className="post-meta">18 de septiembre de 2026 · 4 min de lectura</div>
+              <div className="post-meta">5 de agosto de 2026 · 4 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -196,7 +197,7 @@ export default function Page() {
               <p>
                 Un cortocircuito en un depósito de Merlo. 23 personas trabajando. La brigada actuó en 40 segundos. Lo que pasó antes para que fuera posible.
               </p>
-              <div className="post-meta">18 de septiembre de 2026 · 5 min de lectura</div>
+              <div className="post-meta">22 de julio de 2026 · 5 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -208,7 +209,7 @@ export default function Page() {
               <p>
                 El polvo ABC se compacta, absorbe humedad y pierde eficacia aunque el extintor nunca fue usado. Es el mantenimiento más ignorado — y es obligatorio por norma IRAM.
               </p>
-              <div className="post-meta">18 de septiembre de 2026 · 4 min de lectura</div>
+              <div className="post-meta">8 de julio de 2026 · 4 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -220,19 +221,19 @@ export default function Page() {
               <p>
                 En mayo de 2026 murió un empleado en Chaco cuando explotó un extintor durante una recarga. El dueño fue imputado por homicidio culposo. Qué falló y cómo se previene con mantenimiento certificado.
               </p>
-              <div className="post-meta">18 de septiembre de 2026 · 5 min de lectura</div>
+              <div className="post-meta">24 de junio de 2026 · 5 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
           {" "}
-          <a href="/blog/estafa-matafuegos-retiran-cobran-de-mas" className="post-card">
-            <span className="post-card-tag tag-alerta">Alerta</span>
+          <a href="/blog/oblea-tarjeta-matafuego" className="post-card">
+            <span className="post-card-tag tag-guia">Guía</span>
             <div className="post-card-body">
-              <h2>Cuidado: la estafa del matafuego que ya afectó a comerciantes en todo el país</h2>
+              <h2>Oblea y tarjeta del matafuego: qué son y cómo verificarlas</h2>
               <p>
-                Entran a tu local, retiran los matafuegos con cualquier excusa y después cobran lo que quieren bajo presión. Así funciona la estafa y cómo no caer.
+                Qué datos tiene que tener la etiqueta, qué es la tarjeta de CABA y cómo comprobar en el registro oficial que la empresa está habilitada.
               </p>
-              <div className="post-meta">18 de septiembre de 2026 · 4 min de lectura</div>
+              <div className="post-meta">10 de junio de 2026 · 5 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -244,7 +245,7 @@ export default function Page() {
               <p>
                 En MercadoLibre hay extintores más económicos. Acá explicamos qué diferencia hace el sello IRAM cuando lo necesitás de verdad — y qué pasa con tu seguro si no lo tenés.
               </p>
-              <div className="post-meta">18 de septiembre de 2026 · 5 min de lectura</div>
+              <div className="post-meta">27 de mayo de 2026 · 5 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
@@ -256,10 +257,15 @@ export default function Page() {
               <p>
                 Ley 19587, Decreto 351/79, normas IRAM y resoluciones de la SRT. Todo lo que una empresa argentina debe cumplir en materia de extintores.
               </p>
-              <div className="post-meta">2 de septiembre de 2026 · 6 min de lectura</div>
+              <div className="post-meta">13 de mayo de 2026 · 6 min de lectura</div>
               <span className="read-more">Leer artículo →</span>
             </div>
           </a>
+        </div>
+        <div className="cta-box blog-cta">
+          <h3>¿Tenés dudas sobre tus matafuegos?</h3>
+          <p>Te asesoramos sin cargo y te respondemos en el día.</p>
+          <a href={WHATSAPP_URL} className="btn-red">Consultar por WhatsApp →</a>
         </div>
       </div>
       <SiteFooter />
@@ -275,13 +281,13 @@ h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line
 .blog-hero h1 { font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 12px; }
 .blog-hero p { color: #8A9099; font-size: 16px; }
 .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; padding: 64px 0; }
-.post-card { border: 1px solid var(--gray-border); border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow .15s; }
-.post-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.post-card-tag { background: var(--red); color: var(--white); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 16px; display: block; }
-.tag-normativa { background: #1a3a5c; }
-.tag-guia { background: #2d4a3e; }
-.tag-alerta { background: #7a4f00; }
-.tag-historia { background: #3d2b1f; }
+.post-card { border: 1px solid var(--gray-border); border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease; }
+.post-card { border-top: 3px solid var(--red); }
+.post-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(17,17,17,0.08); }
+/* category: red label on light grey; only "Alerta" gets the solid red band */
+.post-card-tag { background: var(--gray-bg); color: var(--red); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 24px; display: block; border-bottom: 1px solid var(--gray-border); }
+.tag-alerta { background: var(--red); color: var(--white); border-bottom-color: var(--red); }
+.blog-cta { margin-bottom: 72px; }
 .post-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
 .post-card-body h2 { font-size: 22px; line-height: 1.2; }
 .post-card-body p { font-size: 14px; color: var(--gray-mid); flex: 1; }

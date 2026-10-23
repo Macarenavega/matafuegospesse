@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "La estafa del matafuego: cómo funciona y cómo evitarla",
@@ -24,7 +25,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Cuidado: la estafa del matafuego que ya afectó a comerciantes en todo el país",
-      datePublished: "2026-09-18",
+      datePublished: "2026-09-30",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -81,7 +82,7 @@ export default function Page() {
         <span className="article-tag">Alerta</span>
         <h1>Cuidado: la estafa del matafuego que ya afectó a comerciantes en todo el país</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"30 de septiembre de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 4 min de lectura
         </p>
@@ -100,7 +101,7 @@ export default function Page() {
           No nos sorprendió leerlo. A nosotros también nos han consultado clientes de Buenos Aires que pasaron por situaciones similares. Por eso decidimos escribir este artículo: para que sepa cómo funciona la estafa y pueda identificarla antes de que sea tarde.
         </p>
         <div className="warning-box">
-          <strong>⚠️ Si alguien ya retiró tus matafuegos sin tu autorización escrita</strong>
+          <strong><NoteIcon name="alert" />Si alguien ya retiró tus matafuegos sin tu autorización escrita</strong>
           <p>
             No pagues nada. Comunicate con tu empresa habitual de mantenimiento y, si hay presión o amenazas, hacé la denuncia ante la Oficina Municipal de Defensa al Consumidor o la Policía.
           </p>
@@ -190,7 +191,7 @@ export default function Page() {
           Si alguien se presenta en tu negocio diciendo que viene de nuestra parte sin haber acordado una visita con vos directamente, no es de nuestra parte. Escribinos por WhatsApp en el momento y lo verificamos.
         </p>
         <div className="highlight-box">
-          <strong>📋 Instrucción simple para tu equipo de trabajo</strong>
+          <strong><NoteIcon name="list" />Instrucción simple para tu equipo de trabajo</strong>
           {" Pegá un cartel interno junto a los matafuegos: \"Ante cualquier persona que venga a revisar o retirar los matafuegos, avisá al dueño antes de permitir el acceso.\" Un paso, cero costo, evita el 100% de estos casos. "}
         </div>
         <div className="related-posts" style={{ margin: "48px 0 0", padding: "28px", background: "var(--gray-bg)", borderRadius: "6px" }}>

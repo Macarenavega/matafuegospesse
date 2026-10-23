@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "Matafuego barato vs. certificado IRAM: qué cambia | Pesse",
@@ -24,7 +25,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Por qué un matafuego barato puede salirte muy caro",
-      datePublished: "2026-09-18",
+      datePublished: "2026-05-27",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -86,7 +87,7 @@ export default function Page() {
         <span className="article-tag">Guía de compra</span>
         <h1>Por qué un matafuego barato puede salirte muy caro</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"27 de mayo de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 5 min de lectura
         </p>
@@ -108,7 +109,7 @@ export default function Page() {
           Un equipo sin ese sello no pasó esas pruebas. O las esquivó directamente, importando sin pasar por el organismo de certificación.
         </p>
         <div className="highlight-box">
-          <strong>⚖️ El Decreto 351/79 es claro</strong>
+          <strong><NoteIcon name="law" />El Decreto 351/79 es claro</strong>
           {" El artículo sobre protección contra incendios exige que todos los extintores en lugares de trabajo sean equipos certificados según norma IRAM. Tener matafuegos sin certificación no es \"cumplir a medias\" — es no cumplir, con las mismas consecuencias legales que no tenerlos. "}
         </div>
         <h2>Lo que pasa cuando el extintor falla</h2>

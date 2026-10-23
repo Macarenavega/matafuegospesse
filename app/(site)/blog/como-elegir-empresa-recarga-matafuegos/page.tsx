@@ -33,7 +33,7 @@ const jsonLd = {
       "@id": "https://matafuegospesse.com/blog/como-elegir-empresa-recarga-matafuegos#article",
       headline: "Cómo elegir una empresa de recarga de matafuegos (y evitar estafas)",
       description: "Qué verificar antes de contratar la recarga de matafuegos: certificación, etiqueta, factura, plazos y señales de alerta.",
-      datePublished: "2026-10-14",
+      datePublished: "2026-09-16",
       dateModified: "2026-10-14",
       inLanguage: "es-AR",
       author: {
@@ -84,7 +84,7 @@ export default function Page() {
         <span className="article-tag">Guía</span>
         <h1>Cómo elegir una empresa de recarga de matafuegos (y evitar estafas)</h1>
         <p className="article-meta">
-          {"14 de octubre de 2026 · Por "}
+          {"16 de septiembre de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 6 min de lectura
         </p>

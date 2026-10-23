@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
+import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "Normativa de matafuegos en Argentina | Matafuegos Pesse",
@@ -24,7 +26,7 @@ const jsonLd = {
       "@type": "Article",
       headline: "Normativa de matafuegos en Argentina: qué dice la ley",
       description: "Ley 19587, Decreto 351/79, normas IRAM y resoluciones SRT. Todo lo que una empresa argentina debe cumplir.",
-      datePublished: "2026-09-02",
+      datePublished: "2026-05-13",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -86,7 +88,7 @@ export default function Page() {
         <span className="article-tag">Normativa</span>
         <h1>Normativa de matafuegos en Argentina: qué dice la ley</h1>
         <p className="article-meta">
-          {"2 de septiembre de 2026 · Por "}
+          {"13 de mayo de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 6 min de lectura
         </p>
@@ -179,7 +181,7 @@ export default function Page() {
           <li><strong>Responsabilidad penal del empleador</strong>{" si hay lesionados o fallecidos"}</li>
         </ul>
         <div className="highlight-box">
-          <strong>📋 Lista de verificación rápida para tu empresa</strong>
+          <strong><NoteIcon name="list" />Lista de verificación rápida para tu empresa</strong>
           <ul className="checklist">
             <li>Tengo al menos 1 matafuego cada 200 m²</li>
             <li>
@@ -243,30 +245,10 @@ export default function Page() {
 }
 
 // Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
-const css = `:root { --black:#111111; --red:#C41E2A; --red-dark:#900E18; --white:#FFFFFF; --gray-bg:#F5F6F8; --gray-mid:#737880; --gray-border:#DEE1E6; --max-w:1200px; }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-inter), system-ui, sans-serif; color: var(--black); background: var(--white); line-height: 1.7; }
-h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line-height: 1.15; }
-.article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 80px; }
-.article-tag { display: inline-block; background: var(--red); color: var(--white); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 2px; margin-bottom: 20px; }
-.article-wrap h1 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 16px; }
-.article-meta { font-size: 13px; color: var(--gray-mid); margin-bottom: 36px; border-bottom: 1px solid var(--gray-border); padding-bottom: 20px; }
-.article-wrap h2 { font-size: 28px; margin: 40px 0 14px; }
-.article-wrap h3 { font-size: 20px; margin: 28px 0 10px; }
-.article-wrap p { margin-bottom: 18px; font-size: 16px; }
-.article-wrap ul, .article-wrap ol { margin: 0 0 18px 24px; font-size: 16px; }
-.article-wrap li { margin-bottom: 8px; }
-.highlight-box { background: var(--gray-bg); border-left: 4px solid var(--red); padding: 18px 20px; margin: 28px 0; border-radius: 0 4px 4px 0; }
-.highlight-box strong { display: block; font-size: 15px; margin-bottom: 6px; }
+const css = `.article-wrap h3 { font-size: 20px; margin: 28px 0 10px; }
 .norm-card { border: 1px solid var(--gray-border); border-radius: 6px; padding: 20px 24px; margin: 16px 0; }
 .norm-card h3 { font-size: 18px; margin-bottom: 6px; color: var(--red); }
 .norm-card p { margin: 0; font-size: 15px; color: #444; }
 .checklist { list-style: none; margin-left: 0 !important; }
 .checklist li::before { content: "✓ "; color: #1a7f37; font-weight: 700; }
-.cta-box { background: var(--black); color: var(--white); padding: 32px; border-radius: 6px; margin: 48px 0 0; text-align: center; }
-.cta-box h3 { font-size: 26px; color: var(--white); margin-bottom: 10px; }
-.cta-box p { color: #8A9099; margin-bottom: 20px; }
-.btn-red { display: inline-block; background: var(--red); color: var(--white); padding: 12px 28px; border-radius: 4px; font-weight: 600; text-decoration: none; font-size: 15px; }
-.breadcrumb { font-size: 13px; color: var(--gray-mid); margin-bottom: 24px; }
-.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
 `

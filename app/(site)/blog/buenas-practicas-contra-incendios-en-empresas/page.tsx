@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
+import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "Buenas prácticas contra incendios en empresas: caso real",
@@ -23,7 +25,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Cómo las buenas prácticas contra incendios salvaron una fábrica",
-      datePublished: "2026-09-18",
+      datePublished: "2026-07-22",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -85,7 +87,7 @@ export default function Page() {
         <span className="article-tag">Historia real</span>
         <h1>40 segundos y cero heridos: cómo una brigada capacitada salvó una fábrica</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"22 de julio de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 5 min de lectura
         </p>
@@ -164,7 +166,7 @@ export default function Page() {
           <cite>— Jorge</cite>
         </blockquote>
         <div className="highlight-box">
-          <strong>📊 Los números detrás del caso</strong>
+          <strong><NoteIcon name="chart" />Los números detrás del caso</strong>
           {" Un incendio que se controla en los primeros 2 minutos tiene un costo promedio de reparación 40 veces menor que uno que se extiende 10 minutos. La capacitación anual de una brigada de 5 personas cuesta menos que un día de producción perdida. "}
         </div>
         <h2>Qué necesita una empresa para estar preparada</h2>
@@ -237,30 +239,14 @@ export default function Page() {
 }
 
 // Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
-const css = `:root{--black:#111111;--red:#C41E2A;--red-dark:#900E18;--white:#FFFFFF;--gray-bg:#F5F6F8;--gray-mid:#737880;--gray-border:#DEE1E6;--max-w:1200px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-inter),system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.75}
-h1,h2,h3{font-family:var(--font-barlow),sans-serif;font-weight:700;line-height:1.15}
+const css = `body{font-family:var(--font-inter),system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.75}
 .article-wrap{max-width:700px;margin:0 auto;padding:56px 24px 80px}
-.article-tag{display:inline-block;background:var(--red);color:var(--white);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:2px;margin-bottom:20px}
-.article-wrap h1{font-size:clamp(30px,4vw,46px);margin-bottom:16px}
-.article-meta{font-size:13px;color:var(--gray-mid);margin-bottom:36px;border-bottom:1px solid var(--gray-border);padding-bottom:20px}
 .article-wrap h2{font-size:28px;margin:36px 0 12px}
-.article-wrap p{margin-bottom:18px;font-size:16px}
 .article-wrap ul{margin:0 0 18px 24px;font-size:16px}
-.article-wrap li{margin-bottom:8px}
 blockquote{border-left:4px solid var(--red);padding:14px 20px;margin:28px 0;background:var(--gray-bg);font-style:italic;font-size:17px;border-radius:0 4px 4px 0}
 blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--gray-mid);margin-top:8px}
 .timeline{margin:28px 0;padding:0;list-style:none}
 .timeline li{display:flex;gap:16px;margin-bottom:20px;align-items:flex-start}
 .tl-badge{background:var(--red);color:var(--white);font-family:var(--font-barlow),sans-serif;font-size:13px;font-weight:700;padding:4px 10px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:2px}
 .tl-text{font-size:15px;line-height:1.6}
-.highlight-box{background:var(--gray-bg);border-left:4px solid var(--red);padding:18px 20px;margin:28px 0;border-radius:0 4px 4px 0}
-.highlight-box strong{display:block;font-size:15px;margin-bottom:6px}
-.cta-box{background:var(--black);color:var(--white);padding:32px;border-radius:6px;margin:48px 0 0;text-align:center}
-.cta-box h3{font-size:26px;color:var(--white);margin-bottom:10px}
-.cta-box p{color:#8A9099;margin-bottom:20px}
-.btn-red{display:inline-block;background:var(--red);color:var(--white);padding:12px 28px;border-radius:4px;font-weight:600;text-decoration:none;font-size:15px}
-.breadcrumb{font-size:13px;color:var(--gray-mid);margin-bottom:24px}
-.breadcrumb a{color:var(--gray-mid);text-decoration:none}
 `

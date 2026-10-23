@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
+import "@/components/inner-page.css"
 
 export const metadata: Metadata = {
   title: "Quiénes somos — Matafuegos Pesse, desde 1995 en Merlo",
@@ -145,21 +146,7 @@ export default function Page() {
 }
 
 // Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
-const css = `:root {
-  --black: #111111;
-  --red: #C41E2A;
-  --red-dark: #900E18;
-  --white: #FFFFFF;
-  --gray-bg: #F5F6F8;
-  --gray-mid: #737880;
-  --gray-border: #DEE1E6;
-  --max-w: 1200px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-inter), system-ui, sans-serif; color: var(--black); background: var(--white); line-height: 1.7; }
-h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line-height: 1.15; }
-
-.profile-wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+const css = `.profile-wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
 .breadcrumb { font-size: 13px; color: var(--gray-mid); margin-bottom: 20px; }
 .breadcrumb a { color: var(--gray-mid); }
 .profile-wrap h1 { font-size: clamp(34px, 5vw, 52px); margin-bottom: 6px; }
@@ -170,20 +157,17 @@ h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line
 .profile-wrap ul { margin: 0 0 16px 22px; font-size: 16px; }
 .profile-wrap li { margin-bottom: 8px; }
 .profile-wrap a { color: var(--red); }
-
-.cred-table { width: 100%; border-collapse: collapse; font-size: 15px; margin-bottom: 12px; }
+.cred-table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 0 0 12px; }
 .cred-table th, .cred-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--gray-border); vertical-align: top; }
-.cred-table th { width: 38%; background: var(--gray-bg); font-weight: 600; }
-
+.cred-table th { width: 38%; background: var(--gray-bg); font-weight: 600; color: var(--black); font-family: inherit; font-size: inherit; }
+.cred-table tr:nth-child(even) td { background: none; }
 .team-card { display: flex; align-items: center; gap: 20px; border: 1px solid var(--gray-border); border-radius: 6px; padding: 18px; }
 .team-card img { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 .team-card h3 { font-size: 22px; }
 .team-card p { margin: 0; font-size: 15px; color: var(--gray-mid); }
-
-.cta-box { background: var(--black); color: var(--white); border-radius: 6px; padding: 28px; margin-top: 44px; }
+.cta-box { background: var(--black); color: var(--white); border-radius: 6px; padding: 28px; margin-top: 44px; text-align: left; }
 .cta-box p { color: rgba(255,255,255,0.75); }
 .cta-box a.btn { display: inline-block; background: var(--red); color: var(--white); text-decoration: none; font-weight: 600; padding: 12px 22px; border-radius: 4px; margin-top: 6px; }
-
 @media (max-width: 640px) {
   .cred-table th { width: 42%; }
   .team-card { flex-direction: column; align-items: flex-start; }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
+import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "Tipos de matafuegos: cuál usar según el fuego | Pesse",
@@ -24,7 +26,7 @@ const jsonLd = {
       "@type": "Article",
       headline: "Tipos de matafuegos: cuál usar en cada situación",
       description: "Guía completa sobre los tipos de matafuegos y cómo elegir el correcto según la clase de fuego.",
-      datePublished: "2026-09-10",
+      datePublished: "2026-08-19",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -81,7 +83,7 @@ export default function Page() {
         <span className="article-tag">Guía</span>
         <h1>Tipos de matafuegos: cuál usar en cada situación</h1>
         <p className="article-meta">
-          {"10 de septiembre de 2026 · Por "}
+          {"19 de agosto de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 5 min de lectura
         </p>
@@ -227,7 +229,7 @@ export default function Page() {
           </tbody>
         </table>
         <div className="danger-box">
-          <strong>⛔ Error común: polvo ABC en sala de servidores</strong>
+          <strong><NoteIcon name="stop" />Error común: polvo ABC en sala de servidores</strong>
           {" El polvo químico es altamente corrosivo y puede destruir equipos electrónicos de forma irreversible incluso si el fuego era pequeño. Para salas de servidores o centros de datos, el extintor correcto es siempre CO₂. "}
         </div>
         <h2>¿Cuántos matafuegos necesita mi empresa?</h2>
@@ -239,7 +241,7 @@ export default function Page() {
           .
         </p>
         <div className="highlight-box">
-          <strong>💡 Para no equivocarse</strong>
+          <strong><NoteIcon name="tip" />Para no equivocarse</strong>
           {" Si tenés dudas sobre qué tipo y cuántos matafuegos necesita tu empresa, una visita de evaluación de riesgos resuelve todo en una hora. Es parte del servicio que ofrecemos sin cargo para nuevos clientes. "}
         </div>
         <div className="related-posts" style={{ margin: "48px 0 0", padding: "28px", background: "var(--gray-bg)", borderRadius: "6px" }}>
@@ -283,33 +285,9 @@ export default function Page() {
 }
 
 // Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
-const css = `:root { --black:#111111; --red:#C41E2A; --red-dark:#900E18; --white:#FFFFFF; --gray-bg:#F5F6F8; --gray-mid:#737880; --gray-border:#DEE1E6; --max-w:1200px; }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-inter), system-ui, sans-serif; color: var(--black); background: var(--white); line-height: 1.7; }
-h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line-height: 1.15; }
-.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-.article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 80px; }
-.article-tag { display: inline-block; background: var(--red); color: var(--white); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 2px; margin-bottom: 20px; }
-.article-wrap h1 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 16px; }
-.article-meta { font-size: 13px; color: var(--gray-mid); margin-bottom: 36px; border-bottom: 1px solid var(--gray-border); padding-bottom: 20px; }
-.article-wrap h2 { font-size: 28px; margin: 40px 0 14px; }
-.article-wrap h3 { font-size: 20px; margin: 28px 0 10px; }
-.article-wrap p { margin-bottom: 18px; font-size: 16px; }
-.article-wrap ul, .article-wrap ol { margin: 0 0 18px 24px; font-size: 16px; }
-.article-wrap li { margin-bottom: 8px; }
-.highlight-box { background: var(--gray-bg); border-left: 4px solid var(--red); padding: 18px 20px; margin: 28px 0; border-radius: 0 4px 4px 0; }
-.highlight-box strong { display: block; font-size: 15px; margin-bottom: 6px; }
+const css = `.article-wrap h3 { font-size: 20px; margin: 28px 0 10px; }
 .danger-box { background: #FFF5F5; border-left: 4px solid #C41E2A; padding: 18px 20px; margin: 28px 0; border-radius: 0 4px 4px 0; }
 table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 15px; overflow-x: auto; display: block; }
-th { background: var(--black); color: var(--white); text-align: left; padding: 10px 14px; font-family: var(--font-barlow), sans-serif; font-size: 15px; }
-td { padding: 10px 14px; border-bottom: 1px solid var(--gray-border); }
-tr:nth-child(even) td { background: var(--gray-bg); }
 .check { color: #1a7f37; font-weight: 700; }
 .cross { color: #C41E2A; font-weight: 700; }
-.cta-box { background: var(--black); color: var(--white); padding: 32px; border-radius: 6px; margin: 48px 0 0; text-align: center; }
-.cta-box h3 { font-size: 26px; color: var(--white); margin-bottom: 10px; }
-.cta-box p { color: #8A9099; margin-bottom: 20px; }
-.btn-red { display: inline-block; background: var(--red); color: var(--white); padding: 12px 28px; border-radius: 4px; font-weight: 600; text-decoration: none; font-size: 15px; }
-.breadcrumb { font-size: 13px; color: var(--gray-mid); margin-bottom: 24px; }
-.breadcrumb a { color: var(--gray-mid); text-decoration: none; }
 `

@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
+import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "La estafa del matafuego: cómo funciona y cómo evitarla",
@@ -23,7 +25,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Cuidado: la estafa del matafuego que ya afectó a comerciantes en todo el país",
-      datePublished: "2026-09-18",
+      datePublished: "2026-09-30",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -80,7 +82,7 @@ export default function Page() {
         <span className="article-tag">Alerta</span>
         <h1>Cuidado: la estafa del matafuego que ya afectó a comerciantes en todo el país</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"30 de septiembre de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 4 min de lectura
         </p>
@@ -99,7 +101,7 @@ export default function Page() {
           No nos sorprendió leerlo. A nosotros también nos han consultado clientes de Buenos Aires que pasaron por situaciones similares. Por eso decidimos escribir este artículo: para que sepa cómo funciona la estafa y pueda identificarla antes de que sea tarde.
         </p>
         <div className="warning-box">
-          <strong>⚠️ Si alguien ya retiró tus matafuegos sin tu autorización escrita</strong>
+          <strong><NoteIcon name="alert" />Si alguien ya retiró tus matafuegos sin tu autorización escrita</strong>
           <p>
             No pagues nada. Comunicate con tu empresa habitual de mantenimiento y, si hay presión o amenazas, hacé la denuncia ante la Oficina Municipal de Defensa al Consumidor o la Policía.
           </p>
@@ -189,7 +191,7 @@ export default function Page() {
           Si alguien se presenta en tu negocio diciendo que viene de nuestra parte sin haber acordado una visita con vos directamente, no es de nuestra parte. Escribinos por WhatsApp en el momento y lo verificamos.
         </p>
         <div className="highlight-box">
-          <strong>📋 Instrucción simple para tu equipo de trabajo</strong>
+          <strong><NoteIcon name="list" />Instrucción simple para tu equipo de trabajo</strong>
           {" Pegá un cartel interno junto a los matafuegos: \"Ante cualquier persona que venga a revisar o retirar los matafuegos, avisá al dueño antes de permitir el acceso.\" Un paso, cero costo, evita el 100% de estos casos. "}
         </div>
         <div className="related-posts" style={{ margin: "48px 0 0", padding: "28px", background: "var(--gray-bg)", borderRadius: "6px" }}>
@@ -245,18 +247,10 @@ export default function Page() {
 }
 
 // Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
-const css = `:root{--black:#111111;--red:#C41E2A;--red-dark:#900E18;--white:#FFFFFF;--gray-bg:#F5F6F8;--gray-mid:#737880;--gray-border:#DEE1E6;--max-w:1200px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-inter),system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.75}
-h1,h2,h3{font-family:var(--font-barlow),sans-serif;font-weight:700;line-height:1.15}
+const css = `body{font-family:var(--font-inter),system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.75}
 .article-wrap{max-width:700px;margin:0 auto;padding:56px 24px 80px}
-.article-tag{display:inline-block;background:var(--red);color:var(--white);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:2px;margin-bottom:20px}
-.article-wrap h1{font-size:clamp(30px,4vw,46px);margin-bottom:16px}
-.article-meta{font-size:13px;color:var(--gray-mid);margin-bottom:36px;border-bottom:1px solid var(--gray-border);padding-bottom:20px}
 .article-wrap h2{font-size:28px;margin:36px 0 12px}
-.article-wrap p{margin-bottom:18px;font-size:16px}
 .article-wrap ul{margin:0 0 18px 24px;font-size:16px}
-.article-wrap li{margin-bottom:8px}
 blockquote{border-left:4px solid var(--red);padding:14px 20px;margin:28px 0;background:var(--gray-bg);font-style:italic;font-size:17px;border-radius:0 4px 4px 0}
 blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--gray-mid);margin-top:8px}
 .warning-box{background:#fff3cd;border-left:4px solid #e6a817;padding:18px 20px;margin:28px 0;border-radius:0 4px 4px 0}
@@ -268,12 +262,4 @@ blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--gray-
 .safe-list{list-style:none;margin-left:0!important}
 .safe-list li{padding-left:24px;position:relative;margin-bottom:10px}
 .safe-list li::before{content:"✓";position:absolute;left:0;color:#1a7f37;font-weight:700}
-.highlight-box{background:var(--gray-bg);border-left:4px solid var(--red);padding:18px 20px;margin:28px 0;border-radius:0 4px 4px 0}
-.highlight-box strong{display:block;font-size:15px;margin-bottom:6px}
-.cta-box{background:var(--black);color:var(--white);padding:32px;border-radius:6px;margin:48px 0 0;text-align:center}
-.cta-box h3{font-size:26px;color:var(--white);margin-bottom:10px}
-.cta-box p{color:#8A9099;margin-bottom:20px}
-.btn-red{display:inline-block;background:var(--red);color:var(--white);padding:12px 28px;border-radius:4px;font-weight:600;text-decoration:none;font-size:15px}
-.breadcrumb{font-size:13px;color:var(--gray-mid);margin-bottom:24px}
-.breadcrumb a{color:var(--gray-mid);text-decoration:none}
 `

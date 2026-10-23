@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
+import "@/components/inner-page.css"
 
 export const metadata: Metadata = {
   title: "¿Un matafuego vencido puede explotar? Riesgos y plazos",
@@ -251,26 +252,15 @@ export default function Page() {
 }
 
 // Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
-const css = `:root{--black:#111111;--red:#C41E2A;--red-dark:#900E18;--white:#FFFFFF;--gray-bg:#F5F6F8;--gray-mid:#737880;--gray-border:#DEE1E6;--max-w:1200px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font-inter),system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.75}
-h1,h2,h3{font-family:var(--font-barlow),sans-serif;font-weight:700;line-height:1.15}
+const css = `body{font-family:var(--font-inter),system-ui,sans-serif;color:var(--black);background:var(--white);line-height:1.75}
 .article-wrap{max-width:700px;margin:0 auto;padding:56px 24px 80px}
-.article-tag{display:inline-block;background:var(--red);color:var(--white);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:2px;margin-bottom:20px}
-.article-wrap h1{font-size:clamp(30px,4vw,46px);margin-bottom:16px}
-.article-meta{font-size:13px;color:var(--gray-mid);margin-bottom:36px;border-bottom:1px solid var(--gray-border);padding-bottom:20px}
 .article-wrap h2{font-size:28px;margin:36px 0 12px}
-.article-wrap p{margin-bottom:18px;font-size:16px}
-.article-wrap ul,.article-wrap ol{margin:0 0 18px 24px;font-size:16px}
-.article-wrap li{margin-bottom:8px}
 blockquote{border-left:4px solid var(--red);padding:14px 20px;margin:28px 0;background:var(--gray-bg);font-style:italic;font-size:17px;border-radius:0 4px 4px 0}
 blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--gray-mid);margin-top:8px}
 .warning-box{background:#fff3cd;border-left:4px solid #e6a817;padding:18px 20px;margin:28px 0;border-radius:0 4px 4px 0}
 .warning-box strong{display:block;font-size:15px;margin-bottom:6px;color:#7a5200}
 .warning-box p,.warning-box ul{font-size:15px;color:#5a3e00;margin:0}
 .warning-box ul{margin:8px 0 0 20px!important}
-.highlight-box{background:var(--gray-bg);border-left:4px solid var(--red);padding:18px 20px;margin:28px 0;border-radius:0 4px 4px 0}
-.highlight-box strong{display:block;font-size:15px;margin-bottom:6px}
 .storage-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
 .storage-card{border:1px solid var(--gray-border);border-radius:6px;padding:18px}
 .storage-card h3{font-size:17px;margin-bottom:8px}
@@ -279,11 +269,5 @@ blockquote cite{display:block;font-style:normal;font-size:13px;color:var(--gray-
 .storage-card.bad{border-top:3px solid var(--red)}
 .storage-card.good h3{color:#1a7f37}
 .storage-card.bad h3{color:var(--red)}
-.cta-box{background:var(--black);color:var(--white);padding:32px;border-radius:6px;margin:48px 0 0;text-align:center}
-.cta-box h3{font-size:26px;color:var(--white);margin-bottom:10px}
-.cta-box p{color:#8A9099;margin-bottom:20px}
-.btn-red{display:inline-block;background:var(--red);color:var(--white);padding:12px 28px;border-radius:4px;font-weight:600;text-decoration:none;font-size:15px}
-.breadcrumb{font-size:13px;color:var(--gray-mid);margin-bottom:24px}
-.breadcrumb a{color:var(--gray-mid);text-decoration:none}
 @media(max-width:640px){.storage-grid{grid-template-columns:1fr} }
 `

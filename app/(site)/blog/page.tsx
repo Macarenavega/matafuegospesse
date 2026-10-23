@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
+import "@/components/inner-page.css"
 
 export const metadata: Metadata = {
   title: "Blog — Seguridad Contra Incendios | Matafuegos Pesse",
@@ -267,28 +268,13 @@ export default function Page() {
 }
 
 // Page styles carried over from the static site; menu and footer styles live in components/site-chrome.css
-const css = `:root {
-  --black: #111111;
-  --red: #C41E2A;
-  --red-dark: #900E18;
-  --white: #FFFFFF;
-  --gray-bg: #F5F6F8;
-  --gray-mid: #737880;
-  --gray-border: #DEE1E6;
-  --max-w: 1200px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+const css = `html { scroll-behavior: smooth; }
 body { font-family: var(--font-inter), system-ui, sans-serif; color: var(--black); background: var(--white); line-height: 1.6; }
 h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line-height: 1.1; }
-.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-
 .blog-hero { background: var(--black); padding: 64px 24px; text-align: center; }
 .blog-hero h1 { font-size: clamp(32px, 4vw, 52px); color: var(--white); margin-bottom: 12px; }
 .blog-hero p { color: #8A9099; font-size: 16px; }
-
 .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; padding: 64px 0; }
-
 .post-card { border: 1px solid var(--gray-border); border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow .15s; }
 .post-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 .post-card-tag { background: var(--red); color: var(--white); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 16px; display: block; }
@@ -301,7 +287,6 @@ h1, h2, h3 { font-family: var(--font-barlow), sans-serif; font-weight: 700; line
 .post-card-body p { font-size: 14px; color: var(--gray-mid); flex: 1; }
 .post-meta { font-size: 12px; color: var(--gray-mid); margin-top: 8px; }
 .read-more { font-size: 13px; font-weight: 600; color: var(--red); margin-top: 12px; }
-
 @media (max-width: 640px) {
   .posts-grid { grid-template-columns: 1fr; }
 }

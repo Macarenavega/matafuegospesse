@@ -4,6 +4,7 @@ const COLUMNS = [
   {
     title: "Servicios",
     links: [
+      { href: "/venta-de-matafuegos/", label: "Venta de matafuegos" },
       { href: "/recarga-de-matafuegos/", label: "Recarga de matafuegos" },
       { href: "/matafuego-para-auto/", label: "Matafuegos para auto" },
       { href: "/seguridad-e-higiene/", label: "Seguridad e Higiene" },

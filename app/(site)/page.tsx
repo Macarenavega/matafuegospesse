@@ -19,6 +19,47 @@ const ICONS: Record<string, ReactNode> = {
   pin: <><path d="M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></>,
 }
 
+/** Service cards on the home page; each one opens its own page. */
+const SERVICES: { href: string; icon: string; title: string; desc: string; extra?: ReactNode }[] = [
+  {
+    href: "/venta-de-matafuegos/",
+    icon: "extinguisher",
+    title: "Venta de extintores",
+    desc: "Extintores para todo tipo de fuego y superficie. Stock permanente, entrega en el día para Zona Oeste.",
+    extra: <a href="/matafuego-para-auto/" className="service-extra">¿Para el auto? Ver matafuegos apto VTV →</a>,
+  },
+  {
+    href: "/recarga-de-matafuegos/",
+    icon: "wrench",
+    title: "Mantenimiento de extintores",
+    desc: "Recarga, prueba hidráulica y certificación según norma IRAM 3517. Retiro y entrega sin cargo, con equipos de reemplazo.",
+  },
+  {
+    href: "/mangueras-contra-incendio/",
+    icon: "hose",
+    title: "Mangueras contra incendio",
+    desc: "Mangueras tipo piletón y gabinetes normalizados. Instalación y mantenimiento incluidos.",
+  },
+  {
+    href: "/soportes-y-gabinetes/",
+    icon: "cabinet",
+    title: "Soportes y gabinetes",
+    desc: "Portaextintores, soportes y gabinetes homologados para interior y exterior.",
+  },
+  {
+    href: "/senalizacion/",
+    icon: "sign",
+    title: "Señalización",
+    desc: "Cartelería fotoluminiscente y de seguridad conforme a normas IRAM y legislación provincial.",
+  },
+  {
+    href: "/elementos-de-proteccion-personal/",
+    icon: "helmet",
+    title: "Elementos de protección personal",
+    desc: "EPP certificados: cascos, guantes, calzado de seguridad y protección respiratoria.",
+  },
+]
+
 function Icon({ name }: { name: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -280,54 +321,15 @@ export default function Page() {
             </p>
           </div>
           <div className="services-grid">
-            <div className="service-card">
-              <span className="service-icon"><Icon name="extinguisher" /></span>
-              <h3 className="service-title">Venta de extintores</h3>
-              <p className="service-desc">
-                {"Extintores para todo tipo de fuego y superficie. Stock permanente, entrega en el día para Zona Oeste. "}
-                <a href="/matafuego-para-auto/" style={{ color: "var(--red)", fontWeight: "600" }}>
-                  ¿Para el auto? Ver matafuegos apto VTV →
-                </a>
-              </p>
-            </div>
-            <div className="service-card">
-              <span className="service-icon"><Icon name="wrench" /></span>
-              <h3 className="service-title">Mantenimiento de extintores</h3>
-              <p className="service-desc">
-                {"Recarga, prueba hidráulica y certificación según norma IRAM 3517. Retiro y entrega sin cargo, con equipos de reemplazo. "}
-                <a href="/recarga-de-matafuegos/" style={{ color: "var(--red)", fontWeight: "600" }}>
-                  Ver servicio →
-                </a>
-              </p>
-            </div>
-            <div className="service-card">
-              <span className="service-icon"><Icon name="hose" /></span>
-              <h3 className="service-title">Mangueras contra incendio</h3>
-              <p className="service-desc">
-                Mangueras tipo piletón y gabinetes normalizados. Instalación y mantenimiento incluidos.
-              </p>
-            </div>
-            <div className="service-card">
-              <span className="service-icon"><Icon name="cabinet" /></span>
-              <h3 className="service-title">Soportes y gabinetes</h3>
-              <p className="service-desc">
-                Portaextintores, soportes y gabinetes homologados para interior y exterior.
-              </p>
-            </div>
-            <div className="service-card">
-              <span className="service-icon"><Icon name="sign" /></span>
-              <h3 className="service-title">Señalización</h3>
-              <p className="service-desc">
-                Cartelería fotoluminiscente y de seguridad conforme a normas IRAM y legislación provincial.
-              </p>
-            </div>
-            <div className="service-card">
-              <span className="service-icon"><Icon name="helmet" /></span>
-              <h3 className="service-title">Elementos de protección personal</h3>
-              <p className="service-desc">
-                EPP certificados: cascos, guantes, calzado de seguridad y protección respiratoria.
-              </p>
-            </div>
+            {SERVICES.map((sv) => (
+              <div className="service-card" key={sv.href}>
+                <span className="service-icon"><Icon name={sv.icon} /></span>
+                <h3 className="service-title"><a href={sv.href} className="service-link">{sv.title}</a></h3>
+                <p className="service-desc">{sv.desc}</p>
+                {sv.extra}
+                <span className="service-more" aria-hidden="true">Ver más →</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -785,6 +787,16 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
   margin-bottom: 10px;
 }
 
+/* the title link covers the whole card; the VTV link sits above it */
+.service-card { position: relative; display: flex; flex-direction: column; }
+.service-link { color: inherit; text-decoration: none; }
+.service-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.service-link:focus-visible { outline: none; }
+.service-card:has(.service-link:focus-visible) { outline: 3px solid rgba(196,30,42,0.4); outline-offset: 2px; }
+.service-card:hover .service-title { color: var(--red); }
+.service-extra { position: relative; z-index: 1; margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--red); }
+.service-more { margin-top: auto; padding-top: 16px; font-size: 14px; font-weight: 600; color: var(--red); }
+
 .service-desc {
   font-size: 14px;
   color: var(--gray-mid);
@@ -1126,6 +1138,8 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
   .services-grid { grid-template-columns: 1fr; gap: 12px; }
   /* phones: icon beside the text, so six cards don't take two screens */
   .service-card { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; padding: 20px; }
+  .service-card > :not(.service-icon) { grid-column: 2; }
+  .service-more { padding-top: 8px; }
   .service-icon { grid-row: span 2; width: 44px; height: 44px; margin: 0; }
   .service-icon svg { width: 24px; height: 24px; }
   .service-title { font-size: 20px; margin-bottom: 6px; }

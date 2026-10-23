@@ -17,7 +17,13 @@ const barlow = Barlow_Condensed({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://matafuegospesse.com"),
-  icons: { icon: { url: "/favicon.svg", type: "image/svg+xml" } },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "¿Cada cuánto revisar matafuegos? Plazos obligatorios",
@@ -25,7 +26,7 @@ const jsonLd = {
       "@type": "Article",
       headline: "¿Cada cuánto hay que revisar los matafuegos?",
       description: "La normativa IRAM y ART exige controles anuales y quinquenales de matafuegos. Conocé los plazos obligatorios para empresas en Buenos Aires.",
-      datePublished: "2026-09-18",
+      datePublished: "2026-09-02",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -86,7 +87,7 @@ export default function Page() {
         <span className="article-tag">Mantenimiento</span>
         <h1>¿Cada cuánto hay que revisar los matafuegos?</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"2 de septiembre de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 4 min de lectura
         </p>
@@ -140,7 +141,7 @@ export default function Page() {
           </tbody>
         </table>
         <div className="highlight-box">
-          <strong>⚠️ Importante: el precinto y la etiqueta</strong>
+          <strong><NoteIcon name="alert" />Importante: el precinto y la etiqueta</strong>
           {" Cada revisión debe quedar registrada con una etiqueta adherida al matafuego que indique fecha, empresa interviniente y número de habilitación del técnico. Sin esa etiqueta, la revisión no tiene validez frente a la ART ni a una inspección. "}
         </div>
         <h2>¿Qué pasa si no se hacen las revisiones?</h2>
@@ -173,7 +174,7 @@ export default function Page() {
           {" — la revisión debe realizarla un profesional matriculado que emita el comprobante correspondiente."}
         </p>
         <div className="highlight-box">
-          <strong>💡 Consejo práctico</strong>
+          <strong><NoteIcon name="tip" />Consejo práctico</strong>
           {" Llevá un registro escrito (o en planilla) de cada matafuego: número de serie, fecha de la última revisión y fecha de vencimiento de la prueba hidráulica. Es lo primero que pide una inspección. "}
         </div>
         <h2>Resumen rápido</h2>

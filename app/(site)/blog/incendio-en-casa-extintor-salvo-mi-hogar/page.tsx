@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "\"Tenía un matafuego en casa y salvé todo\" | Matafuegos Pesse",
@@ -24,7 +25,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Un incendio en casa a las 2am: cómo un matafuego lo cambió todo",
-      datePublished: "2026-09-18",
+      datePublished: "2026-08-05",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -86,7 +87,7 @@ export default function Page() {
         <span className="article-tag">Historia real</span>
         <h1>{"\"Tenía un matafuego en casa y salvé todo\""}</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"5 de agosto de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 4 min de lectura
         </p>
@@ -125,7 +126,7 @@ export default function Page() {
           <cite>— Ramón</cite>
         </blockquote>
         <div className="highlight-box">
-          <strong>🔥 Los primeros 30 segundos son decisivos</strong>
+          <strong><NoteIcon name="fire" />Los primeros 30 segundos son decisivos</strong>
           {" El 80% de los incendios domésticos que se apagan antes de propagarse son sofocados por el propio habitante con un extintor a mano. Pasados los 2 minutos, la prioridad es evacuar — ya no hay forma segura de combatirlo sin equipo profesional. "}
         </div>
         <h2>¿Qué matafuego corresponde en el hogar?</h2>

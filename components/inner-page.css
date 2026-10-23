@@ -46,3 +46,7 @@ tr:nth-child(even) td { background: var(--gray-bg); }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq summary:hover { color: var(--red); }
 .faq details p { margin: 10px 0 0; }
+
+/* Icon at the start of a note box title (replaces the emojis) */
+.note-icon { width: 18px; height: 18px; vertical-align: -3px; margin-right: 8px; color: var(--red); flex-shrink: 0; }
+.warning-box .note-icon { color: inherit; }

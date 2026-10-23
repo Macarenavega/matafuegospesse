@@ -33,7 +33,7 @@ const jsonLd = {
       "@id": "https://matafuegospesse.com/blog/oblea-tarjeta-matafuego#article",
       headline: "Oblea y tarjeta del matafuego: qué son y cómo verificarlas",
       description: "Qué datos tiene la oblea o etiqueta del matafuego, qué es la tarjeta de CABA y cómo verificar que la empresa recargadora esté habilitada.",
-      datePublished: "2026-10-14",
+      datePublished: "2026-06-10",
       dateModified: "2026-10-14",
       inLanguage: "es-AR",
       image: "https://matafuegospesse.com/og-image.jpg",
@@ -84,7 +84,7 @@ export default function Page() {
         <span className="article-tag">Guía</span>
         <h1>Oblea y tarjeta del matafuego: qué son y cómo verificarlas</h1>
         <p className="article-meta">
-          {"14 de octubre de 2026 · Por "}
+          {"10 de junio de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 5 min de lectura
         </p>

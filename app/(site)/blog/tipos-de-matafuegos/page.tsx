@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "Tipos de matafuegos: cuál usar según el fuego | Pesse",
@@ -25,7 +26,7 @@ const jsonLd = {
       "@type": "Article",
       headline: "Tipos de matafuegos: cuál usar en cada situación",
       description: "Guía completa sobre los tipos de matafuegos y cómo elegir el correcto según la clase de fuego.",
-      datePublished: "2026-09-10",
+      datePublished: "2026-08-19",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -82,7 +83,7 @@ export default function Page() {
         <span className="article-tag">Guía</span>
         <h1>Tipos de matafuegos: cuál usar en cada situación</h1>
         <p className="article-meta">
-          {"10 de septiembre de 2026 · Por "}
+          {"19 de agosto de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 5 min de lectura
         </p>
@@ -228,7 +229,7 @@ export default function Page() {
           </tbody>
         </table>
         <div className="danger-box">
-          <strong>⛔ Error común: polvo ABC en sala de servidores</strong>
+          <strong><NoteIcon name="stop" />Error común: polvo ABC en sala de servidores</strong>
           {" El polvo químico es altamente corrosivo y puede destruir equipos electrónicos de forma irreversible incluso si el fuego era pequeño. Para salas de servidores o centros de datos, el extintor correcto es siempre CO₂. "}
         </div>
         <h2>¿Cuántos matafuegos necesita mi empresa?</h2>
@@ -240,7 +241,7 @@ export default function Page() {
           .
         </p>
         <div className="highlight-box">
-          <strong>💡 Para no equivocarse</strong>
+          <strong><NoteIcon name="tip" />Para no equivocarse</strong>
           {" Si tenés dudas sobre qué tipo y cuántos matafuegos necesita tu empresa, una visita de evaluación de riesgos resuelve todo en una hora. Es parte del servicio que ofrecemos sin cargo para nuevos clientes. "}
         </div>
         <div className="related-posts" style={{ margin: "48px 0 0", padding: "28px", background: "var(--gray-bg)", borderRadius: "6px" }}>

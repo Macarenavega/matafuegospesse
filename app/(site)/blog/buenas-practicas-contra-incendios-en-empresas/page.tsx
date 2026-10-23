@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "Buenas prácticas contra incendios en empresas: caso real",
@@ -24,7 +25,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Cómo las buenas prácticas contra incendios salvaron una fábrica",
-      datePublished: "2026-09-18",
+      datePublished: "2026-07-22",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -86,7 +87,7 @@ export default function Page() {
         <span className="article-tag">Historia real</span>
         <h1>40 segundos y cero heridos: cómo una brigada capacitada salvó una fábrica</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"22 de julio de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 5 min de lectura
         </p>
@@ -165,7 +166,7 @@ export default function Page() {
           <cite>— Jorge</cite>
         </blockquote>
         <div className="highlight-box">
-          <strong>📊 Los números detrás del caso</strong>
+          <strong><NoteIcon name="chart" />Los números detrás del caso</strong>
           {" Un incendio que se controla en los primeros 2 minutos tiene un costo promedio de reparación 40 veces menor que uno que se extiende 10 minutos. La capacitación anual de una brigada de 5 personas cuesta menos que un día de producción perdida. "}
         </div>
         <h2>Qué necesita una empresa para estar preparada</h2>

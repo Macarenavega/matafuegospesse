@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "Cambio de polvo en matafuegos cada 10 años | Pesse",
@@ -24,7 +25,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Por qué hay que cambiar el polvo químico seco del matafuego cada 10 años",
-      datePublished: "2026-09-18",
+      datePublished: "2026-07-08",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -86,7 +87,7 @@ export default function Page() {
         <span className="article-tag">Mantenimiento</span>
         <h1>Por qué hay que cambiar el polvo químico seco cada 10 años</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"8 de julio de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 4 min de lectura
         </p>
@@ -167,7 +168,7 @@ export default function Page() {
           Si el extintor tiene más de 10 años desde su fabricación y nunca tuvo cambio de polvo documentado, ya está en mora.
         </p>
         <div className="highlight-box">
-          <strong>📋 Ciclo completo de mantenimiento de un extintor de polvo ABC</strong>
+          <strong><NoteIcon name="list" />Ciclo completo de mantenimiento de un extintor de polvo ABC</strong>
           <ul style={{ margin: "8px 0 0 20px", fontSize: "15px" }}>
             <li><strong>Cada año:</strong>{" revisión anual (inspección, presión, válvula, manguera)"}</li>
             <li><strong>Cada 5 años:</strong>{" prueba hidráulica del cilindro (re-timbrado)"}</li>

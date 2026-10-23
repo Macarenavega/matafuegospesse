@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
+import { NoteIcon } from "@/components/note-icon"
 
 export const metadata: Metadata = {
   title: "¿Un matafuego vencido puede explotar? Riesgos y plazos",
@@ -24,7 +25,7 @@ const jsonLd = {
     {
       "@type": "Article",
       headline: "Qué pasa cuando un matafuego no recibe el mantenimiento correcto",
-      datePublished: "2026-09-18",
+      datePublished: "2026-06-24",
       dateModified: "2026-10-14",
       author: {
         "@type": "Person",
@@ -86,7 +87,7 @@ export default function Page() {
         <span className="article-tag">Seguridad</span>
         <h1>Qué pasa cuando un matafuego no recibe el mantenimiento correcto</h1>
         <p className="article-meta">
-          {"18 de septiembre de 2026 · Por "}
+          {"24 de junio de 2026 · Por "}
           <a href="/nosotros/juan-changala/" rel="author" style={{ color: "inherit" }}>Juan Changala</a>
           , Lic. en Higiene y Seguridad en el Trabajo · 5 min de lectura
         </p>
@@ -169,7 +170,7 @@ export default function Page() {
           </li>
         </ul>
         <div className="warning-box">
-          <strong>⚠️ Cómo verificar la fecha de fabricación de tu extintor</strong>
+          <strong><NoteIcon name="alert" />Cómo verificar la fecha de fabricación de tu extintor</strong>
           <p>
             Buscá en la parte inferior del cilindro o en la etiqueta original una fecha grabada o estampada en el metal. También puede figurar en la etiqueta de servicio del último mantenimiento. Si no encontrás la fecha y no sabés cuántos años tiene el equipo, consultá con una empresa habilitada — en algunos casos el equipo debe darse de baja directamente.
           </p>
@@ -203,7 +204,7 @@ export default function Page() {
           Esta prueba es la única forma de verificar la integridad estructural del cilindro sin esperar a que falle en condiciones reales. Un cilindro que no pasa la prueba hidráulica, por definición, no es seguro para ser recargado y presurizado.
         </p>
         <div className="highlight-box">
-          <strong>📋 Resumen: señales de que tu extintor necesita atención urgente</strong>
+          <strong><NoteIcon name="list" />Resumen: señales de que tu extintor necesita atención urgente</strong>
           <ul style={{ margin: "8px 0 0 20px", fontSize: "15px" }}>
             <li>La etiqueta de servicio tiene más de 12 meses</li>
             <li>El manómetro está en zona roja o no se mueve</li>

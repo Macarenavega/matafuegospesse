@@ -1335,6 +1335,9 @@ const CSS = `
   font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;pointer-events:none;transition:opacity .8s ease}
 .fh-hint::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--fh-acc);animation:fh-pulse 2.4s ease-in-out infinite}
 .fh-root[data-touched="1"] .fh-hint{opacity:0}
+/* phones: the one-line cue is wider than the screen, so it wraps, centred */
+@media (max-width:639px){.fh-hint{display:block;white-space:normal;width:calc(100% - 32px);text-align:center;letter-spacing:.1em;line-height:1.5}
+  .fh-hint::before{display:inline-block;vertical-align:middle;margin:-2px 8px 0 0}}
 @keyframes fh-pulse{0%,100%{transform:scale(.6);opacity:.45}50%{transform:scale(1);opacity:1}}
 .fh-out{position:absolute;z-index:3;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;
   opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s linear .9s,transform .9s cubic-bezier(.2,.7,.2,1)}

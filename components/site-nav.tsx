@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { WHATSAPP_URL } from "@/lib/site"
 
@@ -12,18 +13,19 @@ const LINKS = [
   { href: "/blog/", label: "Blog" },
 ]
 
-/** The site menu: one source for every page. */
+/** The site menu: one source for every page. On narrow screens the links fold behind a button; the quote CTA stays in the bar. */
 export function SiteNav() {
   const path = usePathname()
   const here = (href: string) => path.replace(/\/?$/, "/") === href
+  const [open, setOpen] = useState(false)
 
   return (
-    <nav className="site-nav">
+    <nav className="site-nav" data-open={open || undefined}>
       <div className="nav-inner">
         <a href="/" className="nav-logo">
           <img width={297} height={102} src="/img/matafuegos-pesse.avif" alt="Matafuegos Pesse" style={{ height: 46, width: "auto", objectFit: "contain" }} />
         </a>
-        <ul className="nav-links">
+        <ul className="nav-links" id="site-menu" onClick={() => setOpen(false)}>
           {LINKS.map((l) => (
             <li key={l.href}>
               <a href={l.href} aria-current={here(l.href) ? "page" : undefined}>
@@ -31,12 +33,15 @@ export function SiteNav() {
               </a>
             </li>
           ))}
-          <li>
-            <a href={WHATSAPP_URL} className="nav-cta">
-              Pedir cotización
-            </a>
-          </li>
         </ul>
+        <a href={WHATSAPP_URL} className="nav-cta">
+          Pedir cotización
+        </a>
+        <button type="button" className="nav-toggle" aria-expanded={open} aria-controls="site-menu" aria-label={open ? "Cerrar menú" : "Abrir menú"} onClick={() => setOpen(!open)}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
+        </button>
       </div>
     </nav>
   )

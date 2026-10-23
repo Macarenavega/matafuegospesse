@@ -1,8 +1,30 @@
 import type { Metadata } from "next"
-import type { CSSProperties } from "react"
+import type { CSSProperties, ReactNode } from "react"
 import { JsonLd } from "@/components/json-ld"
 import FireExtinguishHero from "@/components/ui/fire-extinguish-hero"
 import { WHATSAPP_URL } from "@/lib/site"
+
+/** Line icons (24px grid, Lucide style) for services and contact, so they look the same on every device. */
+const ICONS: Record<string, ReactNode> = {
+  extinguisher: <><path d="M8 10a3 3 0 0 1 6 0v11a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1z" /><path d="M11 7V3M8 3h6M14 3h2a3 3 0 0 1 3 3v6" /></>,
+  wrench: <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z" />,
+  hose: <><circle cx="11" cy="12" r="8" /><circle cx="11" cy="12" r="4" /><path d="M19 12h2v8h-3" /></>,
+  cabinet: <><rect x="5" y="2" width="14" height="20" rx="1" /><rect x="8" y="5" width="8" height="10" rx="1" /><path d="M8 18h3" /></>,
+  sign: <><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4M12 17h.01" /></>,
+  helmet: <><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5" /><path d="M14 6a6 6 0 0 1 6 6v3M4 15v-3a6 6 0 0 1 6-6" /><rect x="2" y="15" width="20" height="4" rx="1" /></>,
+  phone: <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />,
+  chat: <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" />,
+  mail: <><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></>,
+  pin: <><path d="M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></>,
+}
+
+function Icon({ name }: { name: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {ICONS[name]}
+    </svg>
+  )
+}
 
 export const metadata: Metadata = {
   title: "Matafuegos Pesse — Extintores y Seguridad, Buenos Aires",
@@ -258,7 +280,7 @@ export default function Page() {
           </div>
           <div className="services-grid">
             <div className="service-card">
-              <span className="service-icon">🧯</span>
+              <span className="service-icon"><Icon name="extinguisher" /></span>
               <h3 className="service-title">Venta de extintores</h3>
               <p className="service-desc">
                 {"Extintores para todo tipo de fuego y superficie. Stock permanente, entrega en el día para Zona Oeste. "}
@@ -268,7 +290,7 @@ export default function Page() {
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">🔧</span>
+              <span className="service-icon"><Icon name="wrench" /></span>
               <h3 className="service-title">Mantenimiento de extintores</h3>
               <p className="service-desc">
                 {"Recarga, prueba hidráulica y certificación según norma IRAM 3517. Retiro y entrega sin cargo, con equipos de reemplazo. "}
@@ -278,30 +300,28 @@ export default function Page() {
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">
-                <img width={512} height={512} loading="lazy" decoding="async" src="/img/mangueras-contra-incendio.png" alt="Mangueras contra incendio" style={{ width: "48px", height: "48px", objectFit: "contain" }} />
-              </span>
+              <span className="service-icon"><Icon name="hose" /></span>
               <h3 className="service-title">Mangueras contra incendio</h3>
               <p className="service-desc">
                 Mangueras tipo piletón y gabinetes normalizados. Instalación y mantenimiento incluidos.
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">🗄️</span>
+              <span className="service-icon"><Icon name="cabinet" /></span>
               <h3 className="service-title">Soportes y gabinetes</h3>
               <p className="service-desc">
                 Portaextintores, soportes y gabinetes homologados para interior y exterior.
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">🚨</span>
+              <span className="service-icon"><Icon name="sign" /></span>
               <h3 className="service-title">Señalización</h3>
               <p className="service-desc">
                 Cartelería fotoluminiscente y de seguridad conforme a normas IRAM y legislación provincial.
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">🦺</span>
+              <span className="service-icon"><Icon name="helmet" /></span>
               <h3 className="service-title">Elementos de protección personal</h3>
               <p className="service-desc">
                 EPP certificados: cascos, guantes, calzado de seguridad y protección respiratoria.
@@ -543,33 +563,33 @@ export default function Page() {
         <div className="container">
           <div className="contact-inner">
             <div>
-              <p className="section-label" style={{ color: "rgba(255,255,255,0.55)" }}>Contacto</p>
+              <p className="section-label" style={{ color: "rgba(255,255,255,0.85)" }}>Contacto</p>
               <h2 className="section-title" style={{ color: "var(--white)" }}>Pedí tu cotización</h2>
-              <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", marginBottom: "8px", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.9)", marginBottom: "8px", lineHeight: "1.6" }}>
                 Sin compromiso. Respondemos en el día hábil.
               </p>
-              <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.7)", marginBottom: "8px", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.9)", marginBottom: "8px", lineHeight: "1.6" }}>
                 <strong style={{ color: "var(--white)" }}>Horario:</strong>
                 {" lunes a viernes 8:00–18:00 · sábados 9:00–13:00 · domingos cerrado"}
               </p>
               <div className="contact-methods">
                 <a href="tel:02204861235" className="contact-method">
-                  <span className="contact-icon">📞</span>
+                  <span className="contact-icon"><Icon name="phone" /></span>
                   0220-486-1235
                 </a>
                 {" "}
                 <a href="https://api.whatsapp.com/send?phone=+541121685408" className="contact-method">
-                  <span className="contact-icon">💬</span>
+                  <span className="contact-icon"><Icon name="chat" /></span>
                   WhatsApp: +54 11 2168-5408
                 </a>
                 {" "}
                 <a href="mailto:info@matafuegospesse.com" className="contact-method">
-                  <span className="contact-icon">✉️</span>
+                  <span className="contact-icon"><Icon name="mail" /></span>
                   info@matafuegospesse.com
                 </a>
                 {" "}
                 <a href={"https://www.google.com/maps/search/?api=1&query=Matafuegos+Pesse+Sarand%C3%AD+416+Merlo+Buenos+Aires"} className="contact-method" rel="noopener">
-                  <span className="contact-icon">📍</span>
+                  <span className="contact-icon"><Icon name="pin" /></span>
                   Sarandí 416, Merlo, Buenos Aires
                 </a>
               </div>
@@ -621,7 +641,7 @@ export default function Page() {
         <div className="container">
           <div className="footer-inner">
             <a href="/" className="nav-logo">
-              <img width={297} height={102} loading="lazy" decoding="async" src="/img/matafuegos-pesse.avif" alt="Matafuegos Pesse" style={{ height: "34px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1) opacity(0.3)" }} />
+              <img width={297} height={102} loading="lazy" decoding="async" src="/img/matafuegos-pesse.avif" alt="Matafuegos Pesse" style={{ height: "34px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1) opacity(0.6)" }} />
             </a>
             <p className="footer-copy">© 2026 Matafuegos Pesse · Sarandí 416, Merlo, Buenos Aires</p>
             <ul className="footer-nav">
@@ -646,7 +666,7 @@ const css = `:root {
   --red-dark: #900E18;
   --white: #FFFFFF;
   --gray-bg: #F5F6F8;
-  --gray-mid: #737880;
+  --gray-mid: #5C6169;
   --gray-border: #DEE1E6;
   --max-w: 1200px;
 }
@@ -714,7 +734,7 @@ nav {
 .btn-primary:hover { background: var(--red-dark); }
 
 /* SECTIONS */
-section { padding: 80px 0; }
+section { padding: 80px 0; scroll-margin-top: 64px; }
 
 .section-label {
   font-size: 12px;
@@ -758,10 +778,17 @@ section { padding: 80px 0; }
 .service-card:hover { background: #FAFBFC; }
 
 .service-icon {
-  font-size: 28px;
-  margin-bottom: 18px;
-  display: block;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #FCEBEC;
+  color: var(--red);
 }
+
+.service-icon svg { width: 28px; height: 28px; }
 
 .service-title {
   font-family: var(--font-barlow), sans-serif;
@@ -800,9 +827,11 @@ section { padding: 80px 0; }
   margin-bottom: 10px;
 }
 
+.diff-section .section-label { color: #F2606A; }
+
 .diff-text {
   font-size: 14px;
-  color: #5A6068;
+  color: #A3A9B1;
   line-height: 1.65;
 }
 
@@ -833,7 +862,7 @@ section { padding: 80px 0; }
   font-family: var(--font-barlow), sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #B0B5BC;
+  color: var(--gray-mid);
   text-align: center;
   letter-spacing: 0.04em;
 }
@@ -989,10 +1018,17 @@ section { padding: 80px 0; }
 .contact-method:hover { color: var(--white); }
 
 .contact-icon {
-  font-size: 18px;
-  width: 32px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.16);
+  color: var(--white);
 }
+
+.contact-icon svg { width: 18px; height: 18px; }
 
 .contact-form {
   display: flex;
@@ -1002,8 +1038,8 @@ section { padding: 80px 0; }
 
 .form-input {
   padding: 12px 16px;
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(0,0,0,0.14);
+  border: 1px solid rgba(255,255,255,0.35);
   border-radius: 4px;
   font-size: 15px;
   color: var(--white);
@@ -1012,8 +1048,8 @@ section { padding: 80px 0; }
   transition: border-color .15s;
 }
 
-.form-input::placeholder { color: rgba(255,255,255,0.45); }
-.form-input:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.18); }
+.form-input::placeholder { color: rgba(255,255,255,0.8); }
+.form-input:focus { border-color: rgba(255,255,255,0.8); background: rgba(0,0,0,0.2); }
 .form-input option { color: var(--black); background: var(--white); }
 
 .form-textarea { resize: vertical; min-height: 110px; }
@@ -1046,7 +1082,7 @@ footer {
   align-items: center;
 }
 
-.footer-copy { font-size: 13px; color: #3A4048; }
+.footer-copy { font-size: 13px; color: #9AA0A8; }
 
 .footer-nav {
   display: flex;
@@ -1058,12 +1094,12 @@ footer {
 
 .footer-nav a {
   font-size: 13px;
-  color: #3A4048;
+  color: #9AA0A8;
   text-decoration: none;
   transition: color .15s;
 }
 
-.footer-nav a:hover { color: #6A7078; }
+.footer-nav a:hover { color: var(--white); }
 
 /* RESPONSIVE */
 

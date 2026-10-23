@@ -115,7 +115,9 @@ export default function Page() {
           <li>
             <span className="tl-badge">8 seg</span>
             <span className="tl-text">
-              Otros dos operarios — integrantes de la brigada interna — se dirigen al gabinete de matafuegos más cercano. El resto del personal inicia la evacuación según el procedimiento ensayado.
+              {"Otros dos operarios — integrantes de la brigada interna — se dirigen al "}
+              <a href="/soportes-y-gabinetes/">gabinete de matafuegos</a>
+              {" más cercano. El resto del personal inicia la evacuación según el procedimiento ensayado."}
             </span>
           </li>
           <li>

@@ -93,7 +93,11 @@ export default function Page() {
         <h2>Qué incluye la compra</h2>
         <ul>
           <li>Matafuego nuevo, con certificación y sello IRAM</li>
-          <li>Soporte para fijarlo a la pared, o gabinete si va a la intemperie</li>
+          <li>
+            {"Soporte para fijarlo a la pared, o "}
+            <a href="/soportes-y-gabinetes/">gabinete</a>
+            {" si va a la intemperie"}
+          </li>
           <li>Tarjeta y etiqueta con los datos de la empresa y la fecha</li>
           <li>Asesoramiento sobre el tipo, la cantidad y la ubicación</li>
           <li>Recordatorio del próximo vencimiento, para que no se te pase la recarga</li>

@@ -199,6 +199,18 @@ export default function Page() {
           <a href="/matafuego-para-auto/">matafuegos para auto</a>
           .
         </p>
+        <h2>Para completar la instalación</h2>
+        <p>
+          {"Si necesitás equipos nuevos, mirá la "}
+          <a href="/venta-de-matafuegos/">venta de matafuegos</a>
+          {". Para que cada matafuego esté bien ubicado y se encuentre rápido, también instalamos "}
+          <a href="/soportes-y-gabinetes/">soportes y gabinetes</a>
+          {" y la "}
+          <a href="/senalizacion/">señalización</a>
+          {", y mantenemos las "}
+          <a href="/mangueras-contra-incendio/">mangueras de las bocas de incendio</a>
+          .
+        </p>
         <h2>Zonas que cubrimos</h2>
         <p>
           Desde Sarandí 416, Merlo, atendemos Merlo, Morón, Ituzaingó, Moreno, Luján, La Matanza, Tres de Febrero y San Martín, el resto de la Provincia de Buenos Aires y la Ciudad Autónoma de Buenos Aires.

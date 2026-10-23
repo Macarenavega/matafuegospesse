@@ -182,6 +182,15 @@ export default function Page() {
           </a>
           .
         </p>
+        <p>
+          {"Además de los matafuegos, proveemos lo que suelen observar las inspecciones: la "}
+          <a href="/senalizacion/">señalización de seguridad</a>
+          {", las "}
+          <a href="/mangueras-contra-incendio/">mangueras y bocas de incendio</a>
+          {" y los "}
+          <a href="/elementos-de-proteccion-personal/">elementos de protección personal</a>
+          {" del personal."}
+        </p>
         <h2>Preguntas frecuentes</h2>
         <div className="faq">
           <details>

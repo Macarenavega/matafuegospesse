@@ -5,7 +5,7 @@ import "@/components/inner-page.css"
 
 export const metadata: Metadata = {
   title: "Quiénes somos — Matafuegos Pesse, desde 1995 en Merlo",
-  description: "Matafuegos Pesse es una empresa familiar fundada en 1995 por Elisabet Pesse en Merlo. Recarga y mantenimiento de matafuegos certificado IRAM 3517-2, con servicio en Provincia de Buenos Aires y CABA.",
+  description: "Empresa familiar fundada en 1995 en Merlo. Recarga y mantenimiento de matafuegos certificado IRAM 3517-2 en Provincia de Buenos Aires y CABA.",
   robots: "index, follow",
   alternates: {
     canonical: "https://matafuegospesse.com/nosotros/"

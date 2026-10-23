@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
 
 const URL = "https://matafuegospesse.com/mangueras-contra-incendio/"
-const TITLE = "Mangueras contra incendio: instalación y mantenimiento | Pesse"
+const TITLE = "Mangueras contra incendio y mantenimiento | Pesse"
 const DESCRIPTION = "Mangueras, lanzas y gabinetes para bocas de incendio, normalizados. Instalación, inspección y mantenimiento para empresas e industrias en Zona Oeste y CABA."
 const WHATSAPP = "https://api.whatsapp.com/send?phone=+541121685408&text=Hola!%20Necesito%20consultar%20por%20mangueras%20contra%20incendio."
 

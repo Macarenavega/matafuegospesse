@@ -237,7 +237,7 @@ const jsonLd = {
       }
     ]
   },
-  logo: "https://matafuegospesse.com/img/matafuegos-pesse.avif",
+  logo: "https://matafuegospesse.com/img/matafuegos-pesse-logo.webp",
   image: [
     "https://matafuegospesse.com/img/local-matafuegos-pesse-sarandi-416-merlo.webp",
     "https://matafuegospesse.com/og-image.jpg"

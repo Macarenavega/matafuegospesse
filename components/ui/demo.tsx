@@ -12,7 +12,7 @@ export default function Demo() {
       <FireExtinguishHero
         brand={
           // the dark logo turned white for the black hero, as in the site footer
-          <img src="/img/matafuegos-pesse.avif" width={297} height={102} alt="Matafuegos Pesse" style={{ height: 40, width: "auto", filter: "brightness(0) invert(1)" }} />
+          <img src="/img/matafuegos-pesse-logo.webp" width={506} height={208} alt="Matafuegos Pesse" style={{ height: 40, width: "auto", filter: "brightness(0) invert(1)" }} />
         }
         brandHref="/"
         navLinks={[

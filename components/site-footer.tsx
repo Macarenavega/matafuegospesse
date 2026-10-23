@@ -28,7 +28,7 @@ export function SiteFooter() {
       <div className="footer-grid">
         <div className="footer-brand">
           <a href="/" className="footer-logo">
-            <img width={297} height={102} loading="lazy" decoding="async" src="/img/matafuegos-pesse.avif" alt="Matafuegos Pesse" />
+            <img width={506} height={208} loading="lazy" decoding="async" src="/img/matafuegos-pesse-logo.webp" alt="Matafuegos Pesse" />
           </a>
           <p>Venta, recarga y mantenimiento de matafuegos con certificación IRAM. Desde 1995 en Merlo, Zona Oeste.</p>
         </div>

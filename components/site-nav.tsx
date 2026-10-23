@@ -23,7 +23,7 @@ export function SiteNav() {
     <nav className="site-nav" data-open={open || undefined}>
       <div className="nav-inner">
         <a href="/" className="nav-logo">
-          <img width={297} height={102} src="/img/matafuegos-pesse.avif" alt="Matafuegos Pesse" />
+          <img width={506} height={208} src="/img/matafuegos-pesse-logo.webp" alt="Matafuegos Pesse" />
         </a>
         <ul className="nav-links" id="site-menu" onClick={() => setOpen(false)}>
           {LINKS.map((l) => (

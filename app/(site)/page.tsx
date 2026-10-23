@@ -563,7 +563,7 @@ export default function Page() {
         <div className="container">
           <div className="contact-inner">
             <div>
-              <p className="section-label" style={{ color: "rgba(255,255,255,0.85)" }}>Contacto</p>
+              <p className="section-label">Contacto</p>
               <h2 className="section-title" style={{ color: "var(--white)" }}>Pedí tu cotización</h2>
               <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.9)", marginBottom: "8px", lineHeight: "1.6" }}>
                 Sin compromiso. Respondemos en el día hábil.
@@ -597,6 +597,8 @@ export default function Page() {
             </div>
             <div>
               <form className="contact-form" name="contacto" action="https://api.web3forms.com/submit" method="POST">
+                <h3 className="form-title">Envianos tu consulta</h3>
+                <p className="form-sub">Completá tus datos y te contactamos en el día hábil.</p>
                 <input type="hidden" name="access_key" defaultValue="fc1c3703-b5c0-45ca-8460-332ea2183c2f" />
                 {" "}
                 <input type="hidden" name="subject" defaultValue="Nuevo contacto desde matafuegospesse.com" />
@@ -631,7 +633,7 @@ export default function Page() {
                 {" "}
                 <textarea id="f-mensaje" name="mensaje" className="form-input form-textarea" placeholder="Contanos más sobre lo que necesitás…"></textarea>
                 {" "}
-                <button type="submit" className="btn-white">Enviar consulta</button>
+                <button type="submit" className="form-submit">Enviar consulta <span aria-hidden="true">→</span></button>
               </form>
             </div>
           </div>
@@ -761,26 +763,29 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
 .section-header { margin-bottom: 48px; }
 
 /* SERVICIOS */
+#servicios { background: var(--gray-bg); }
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: var(--gray-border);
-  border: 2px solid var(--gray-border);
+  gap: 20px;
 }
 
 .service-card {
   background: var(--white);
-  padding: 40px 36px;
-  transition: background .15s;
+  border: 1px solid var(--gray-border);
+  border-top: 3px solid var(--red);
+  border-radius: 10px;
+  padding: 32px 30px;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.service-card:hover { background: #FAFBFC; }
+.service-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(17,17,17,0.08); }
 
 .service-icon {
   width: 52px;
   height: 52px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   display: grid;
   place-items: center;
   border-radius: 10px;
@@ -988,19 +993,24 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
 }
 
 /* CONTACTO */
-.contact-section { background: var(--red); }
+.contact-section {
+  background: radial-gradient(ellipse 70% 60% at 0% 0%, rgba(196,30,42,0.22), transparent 70%), #161616;
+  border-top: 3px solid var(--red);
+}
+
+.contact-section .section-label { color: #F2606A; }
 
 .contact-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 64px;
   align-items: start;
 }
 
 .contact-methods {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   margin-top: 32px;
 }
 
@@ -1010,7 +1020,7 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
   gap: 14px;
   font-size: 15px;
   font-weight: 500;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.88);
   text-decoration: none;
   transition: color .15s;
 }
@@ -1018,15 +1028,18 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
 .contact-method:hover { color: var(--white); }
 
 .contact-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(0,0,0,0.16);
-  color: var(--white);
+  background: rgba(196,30,42,0.18);
+  color: #F2606A;
+  transition: background .15s, color .15s;
 }
+
+.contact-method:hover .contact-icon { background: var(--red); color: var(--white); }
 
 .contact-icon svg { width: 18px; height: 18px; }
 
@@ -1034,45 +1047,66 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
   display: flex;
   flex-direction: column;
   gap: 14px;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 36px 32px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+
+.form-title {
+  font-size: 26px;
+  color: var(--black);
+}
+
+.form-sub {
+  font-size: 14px;
+  color: var(--gray-mid);
+  margin-bottom: 6px;
 }
 
 .form-input {
-  padding: 12px 16px;
-  background: rgba(0,0,0,0.14);
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 4px;
+  padding: 13px 16px;
+  background: var(--gray-bg);
+  border: 1px solid var(--gray-border);
+  border-radius: 6px;
   font-size: 15px;
-  color: var(--white);
+  color: var(--black);
   font-family: var(--font-inter), sans-serif;
   outline: none;
-  transition: border-color .15s;
+  transition: border-color .15s, box-shadow .15s, background .15s;
 }
 
-.form-input::placeholder { color: rgba(255,255,255,0.8); }
-.form-input:focus { border-color: rgba(255,255,255,0.8); background: rgba(0,0,0,0.2); }
+.form-input::placeholder { color: var(--gray-mid); }
+.form-input:focus { border-color: var(--red); background: var(--white); box-shadow: 0 0 0 3px rgba(196,30,42,0.15); }
 .form-input option { color: var(--black); background: var(--white); }
 
 .form-textarea { resize: vertical; min-height: 110px; }
 
-.btn-white {
-  background: var(--white);
-  color: var(--red);
-  padding: 14px 28px;
-  border-radius: 4px;
+.form-submit {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: var(--white);
+  padding: 15px 28px;
+  border-radius: 6px;
   font-size: 15px;
   font-weight: 600;
   border: none;
   cursor: pointer;
   font-family: var(--font-inter), sans-serif;
-  align-self: flex-start;
-  transition: opacity .15s;
+  margin-top: 4px;
+  transition: background .15s;
 }
 
-.btn-white:hover { opacity: 0.88; }
+.form-submit:hover { background: var(--red-dark); }
+.form-submit:focus-visible { outline: 3px solid rgba(196,30,42,0.35); outline-offset: 2px; }
 
 /* FOOTER */
 footer {
   background: var(--black);
+  border-top: 1px solid #2A2A2A;
   padding: 36px 0;
 }
 
@@ -1151,7 +1185,14 @@ footer {
 
 @media (max-width: 600px) {
   section { padding: 56px 0; }
-  .services-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; gap: 12px; }
+  /* phones: icon beside the text, so six cards don't take two screens */
+  .service-card { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; padding: 20px; }
+  .service-icon { grid-row: span 2; width: 44px; height: 44px; margin: 0; }
+  .service-icon svg { width: 24px; height: 24px; }
+  .service-title { font-size: 20px; margin-bottom: 6px; }
+  .contact-form { padding: 28px 20px; }
+  .form-submit { width: 100%; }
   .diff-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 

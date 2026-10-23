@@ -1440,10 +1440,12 @@ function renderHeadline(text: string, accent: string) {
         )
       }
     }
+    // the space between lines is invisible (each line is a block) but keeps the heading's text readable
     return (
-      <span className="fh-line" key={li}>
-        {content}
-      </span>
+      <React.Fragment key={li}>
+        {li > 0 && " "}
+        <span className="fh-line">{content}</span>
+      </React.Fragment>
     )
   })
 }

@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer"
 import "@/components/inner-page.css"
 
 const URL = "https://matafuegospesse.com/senalizacion/"
-const TITLE = "Señalización de seguridad y cartelería fotoluminiscente | Pesse"
+const TITLE = "Señalización de seguridad fotoluminiscente | Pesse"
 const DESCRIPTION = "Carteles de matafuego, salida de emergencia, riesgo eléctrico y planos de evacuación. Cartelería fotoluminiscente conforme a normas IRAM. Zona Oeste y CABA."
 const WHATSAPP = "https://api.whatsapp.com/send?phone=+541121685408&text=Hola!%20Necesito%20se%C3%B1alizaci%C3%B3n%20de%20seguridad."
 

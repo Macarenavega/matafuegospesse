@@ -2,20 +2,36 @@
 .site-nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--gray-border); }
 .site-nav .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 .site-nav .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.site-nav .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.site-nav .nav-logo img { height: 52px; width: auto; object-fit: contain; }
+.site-nav .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; margin-left: auto; }
 .site-nav .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-mid); text-decoration: none; transition: color .15s; }
 .site-nav .nav-links a:hover, .site-nav .nav-links a[aria-current="page"] { color: var(--black); }
-.site-nav .nav-cta { background: var(--red) !important; color: var(--white) !important; padding: 8px 20px; border-radius: 4px; font-weight: 600 !important; }
-.site-nav .nav-cta:hover { background: var(--red-dark) !important; }
+.site-nav .nav-cta { margin-left: 28px; background: var(--red); color: var(--white); padding: 8px 20px; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.site-nav .nav-cta:hover { background: var(--red-dark); }
+.site-nav .nav-toggle { display: none; }
 
-/* Below 1180px the full menu doesn't fit in one row: it drops under the logo and scrolls sideways */
+/* Below 1180px the links don't fit in one row: they fold behind the menu button, the quote CTA stays in the bar */
 @media (max-width: 1180px) {
-  .site-nav .nav-inner { height: auto; flex-wrap: wrap; row-gap: 8px; padding-top: 10px; padding-bottom: 10px; }
-  .site-nav .nav-links { display: flex; width: 100%; overflow-x: auto; gap: 18px; white-space: nowrap; padding-bottom: 4px; scrollbar-width: none; }
+  .site-nav .nav-inner { height: auto; min-height: 64px; flex-wrap: wrap; padding: 0 16px; }
+  .site-nav .nav-logo img { height: 44px; }
+  .site-nav .nav-cta { margin-left: auto; padding: 8px 14px; }
+  .site-nav .nav-toggle { display: grid; place-items: center; width: 44px; height: 44px; margin-right: -8px; background: none; border: 0; color: var(--black); cursor: pointer; }
+  .site-nav .nav-links { display: none; order: 1; width: 100%; flex-direction: column; align-items: stretch; gap: 0; margin: 0; padding-bottom: 8px; }
+  .site-nav[data-open] .nav-links { display: flex; }
+  .site-nav .nav-links a { display: block; padding: 14px 0; font-size: 16px; color: var(--black); border-top: 1px solid var(--gray-border); }
 }
 
-.site-footer { background: var(--black); padding: 32px 24px; text-align: center; }
-.site-footer .footer-copy { font-size: 13px; color: #555; margin-top: 12px; }
-.site-footer .footer-nav { display: flex; gap: 20px; justify-content: center; list-style: none; flex-wrap: wrap; }
-.site-footer .footer-nav a { font-size: 13px; color: #555; text-decoration: none; }
-.site-footer .footer-nav a:hover { color: var(--white); }
+.site-footer { background: var(--black); border-top: 1px solid #2A2A2A; padding: 56px 24px 28px; color: #9AA0A8; font-size: 14px; line-height: 1.6; }
+.site-footer .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; max-width: var(--max-w); margin: 0 auto; }
+.site-footer .footer-logo img { height: 40px; width: auto; filter: brightness(0) invert(1); opacity: .85; }
+.site-footer .footer-brand p { margin-top: 14px; max-width: 280px; }
+.site-footer .footer-title { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
+.site-footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; }
+.site-footer a { color: #9AA0A8; text-decoration: none; transition: color .15s; }
+.site-footer a:hover { color: var(--white); }
+.site-footer .footer-copy { max-width: var(--max-w); margin: 40px auto 0; padding-top: 20px; border-top: 1px solid #2A2A2A; font-size: 13px; }
+@media (max-width: 900px) { .site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) {
+  .site-footer .footer-grid { gap: 28px 20px; }
+  .site-footer .footer-brand, .site-footer .footer-grid > div:last-child { grid-column: 1 / -1; }
+}

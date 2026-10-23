@@ -1,8 +1,31 @@
 import type { Metadata } from "next"
-import type { CSSProperties } from "react"
+import type { CSSProperties, ReactNode } from "react"
 import { JsonLd } from "@/components/json-ld"
+import { SiteFooter } from "@/components/site-footer"
 import FireExtinguishHero from "@/components/ui/fire-extinguish-hero"
 import { WHATSAPP_URL } from "@/lib/site"
+
+/** Line icons (24px grid, Lucide style) for services and contact, so they look the same on every device. */
+const ICONS: Record<string, ReactNode> = {
+  extinguisher: <><path d="M8 10a3 3 0 0 1 6 0v11a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1z" /><path d="M11 7V3M8 3h6M14 3h2a3 3 0 0 1 3 3v6" /></>,
+  wrench: <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z" />,
+  hose: <><circle cx="11" cy="12" r="8" /><circle cx="11" cy="12" r="4" /><path d="M19 12h2v8h-3" /></>,
+  cabinet: <><rect x="5" y="2" width="14" height="20" rx="1" /><rect x="8" y="5" width="8" height="10" rx="1" /><path d="M8 18h3" /></>,
+  sign: <><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4M12 17h.01" /></>,
+  helmet: <><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5" /><path d="M14 6a6 6 0 0 1 6 6v3M4 15v-3a6 6 0 0 1 6-6" /><rect x="2" y="15" width="20" height="4" rx="1" /></>,
+  phone: <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />,
+  chat: <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" />,
+  mail: <><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></>,
+  pin: <><path d="M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></>,
+}
+
+function Icon({ name }: { name: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {ICONS[name]}
+    </svg>
+  )
+}
 
 export const metadata: Metadata = {
   title: "Matafuegos Pesse — Extintores y Seguridad, Buenos Aires",
@@ -233,8 +256,14 @@ export default function Page() {
         body="Venta, recarga y mantenimiento de matafuegos con certificación IRAM. Respuesta rápida para hogares, comercios e industrias de Provincia de Buenos Aires y CABA."
         primaryCta={{ label: "Solicitar presupuesto", href: WHATSAPP_URL }}
         secondaryCta={{ label: "Ver servicios", href: "#servicios" }}
-        hint="Pasá el cursor para apagar el fuego"
-        hintTouch="Deslizá para apagar el fuego"
+        hint="Pasá el cursor de punta a punta para apagar el fuego"
+        hintTouch="Deslizá de punta a punta para apagar el fuego"
+        outCard={{
+          title: "Así de rápido apagamos el fuego.",
+          body: "Ante una emergencia o para tener tus matafuegos al día, contactanos y te respondemos en el día.",
+          cta: { label: "Contactanos", href: WHATSAPP_URL },
+          note: "Lunes a viernes de 8 a 18 · Sábados de 9 a 13",
+        }}
         headingFont="var(--font-barlow), sans-serif"
         accentFont="var(--font-barlow), sans-serif"
         bodyFont="var(--font-inter), system-ui, sans-serif"
@@ -252,7 +281,7 @@ export default function Page() {
           </div>
           <div className="services-grid">
             <div className="service-card">
-              <span className="service-icon">🧯</span>
+              <span className="service-icon"><Icon name="extinguisher" /></span>
               <h3 className="service-title">Venta de extintores</h3>
               <p className="service-desc">
                 {"Extintores para todo tipo de fuego y superficie. Stock permanente, entrega en el día para Zona Oeste. "}
@@ -262,7 +291,7 @@ export default function Page() {
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">🔧</span>
+              <span className="service-icon"><Icon name="wrench" /></span>
               <h3 className="service-title">Mantenimiento de extintores</h3>
               <p className="service-desc">
                 {"Recarga, prueba hidráulica y certificación según norma IRAM 3517. Retiro y entrega sin cargo, con equipos de reemplazo. "}
@@ -272,30 +301,28 @@ export default function Page() {
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">
-                <img width={512} height={512} loading="lazy" decoding="async" src="/img/mangueras-contra-incendio.png" alt="Mangueras contra incendio" style={{ width: "48px", height: "48px", objectFit: "contain" }} />
-              </span>
+              <span className="service-icon"><Icon name="hose" /></span>
               <h3 className="service-title">Mangueras contra incendio</h3>
               <p className="service-desc">
                 Mangueras tipo piletón y gabinetes normalizados. Instalación y mantenimiento incluidos.
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">🗄️</span>
+              <span className="service-icon"><Icon name="cabinet" /></span>
               <h3 className="service-title">Soportes y gabinetes</h3>
               <p className="service-desc">
                 Portaextintores, soportes y gabinetes homologados para interior y exterior.
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">🚨</span>
+              <span className="service-icon"><Icon name="sign" /></span>
               <h3 className="service-title">Señalización</h3>
               <p className="service-desc">
                 Cartelería fotoluminiscente y de seguridad conforme a normas IRAM y legislación provincial.
               </p>
             </div>
             <div className="service-card">
-              <span className="service-icon">🦺</span>
+              <span className="service-icon"><Icon name="helmet" /></span>
               <h3 className="service-title">Elementos de protección personal</h3>
               <p className="service-desc">
                 EPP certificados: cascos, guantes, calzado de seguridad y protección respiratoria.
@@ -340,16 +367,14 @@ export default function Page() {
       </section>
       <section className="clients-section">
         <div className="container">
-          <p className="section-label">Clientes que nos eligen</p>
-          <div className="clients-strip">
-            <div className="client-badge"><span className="client-name">Eternit</span></div>
-            <div className="client-badge"><span className="client-name">Shell</span></div>
-            <div className="client-badge"><span className="client-name">Solo Deportes</span></div>
-            <div className="client-badge"><span className="client-name">Banco Nación</span></div>
-            <div className="client-badge" style={{ borderRight: "none" }}>
-              <span className="client-name">Banco Provincia</span>
-            </div>
-          </div>
+          <p className="section-label">Empresas e instituciones que confían en nosotros</p>
+          <ul className="clients-strip">
+            <li className="client-name">Eternit</li>
+            <li className="client-name">Shell</li>
+            <li className="client-name">Solo Deportes</li>
+            <li className="client-name">Banco Nación</li>
+            <li className="client-name">Banco Provincia</li>
+          </ul>
         </div>
       </section>
       <section className="cap-section" id="capacitaciones">
@@ -537,33 +562,33 @@ export default function Page() {
         <div className="container">
           <div className="contact-inner">
             <div>
-              <p className="section-label" style={{ color: "rgba(255,255,255,0.55)" }}>Contacto</p>
+              <p className="section-label">Contacto</p>
               <h2 className="section-title" style={{ color: "var(--white)" }}>Pedí tu cotización</h2>
-              <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", marginBottom: "8px", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.9)", marginBottom: "8px", lineHeight: "1.6" }}>
                 Sin compromiso. Respondemos en el día hábil.
               </p>
-              <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.7)", marginBottom: "8px", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.9)", marginBottom: "8px", lineHeight: "1.6" }}>
                 <strong style={{ color: "var(--white)" }}>Horario:</strong>
                 {" lunes a viernes 8:00–18:00 · sábados 9:00–13:00 · domingos cerrado"}
               </p>
               <div className="contact-methods">
                 <a href="tel:02204861235" className="contact-method">
-                  <span className="contact-icon">📞</span>
+                  <span className="contact-icon"><Icon name="phone" /></span>
                   0220-486-1235
                 </a>
                 {" "}
                 <a href="https://api.whatsapp.com/send?phone=+541121685408" className="contact-method">
-                  <span className="contact-icon">💬</span>
+                  <span className="contact-icon"><Icon name="chat" /></span>
                   WhatsApp: +54 11 2168-5408
                 </a>
                 {" "}
                 <a href="mailto:info@matafuegospesse.com" className="contact-method">
-                  <span className="contact-icon">✉️</span>
+                  <span className="contact-icon"><Icon name="mail" /></span>
                   info@matafuegospesse.com
                 </a>
                 {" "}
                 <a href={"https://www.google.com/maps/search/?api=1&query=Matafuegos+Pesse+Sarand%C3%AD+416+Merlo+Buenos+Aires"} className="contact-method" rel="noopener">
-                  <span className="contact-icon">📍</span>
+                  <span className="contact-icon"><Icon name="pin" /></span>
                   Sarandí 416, Merlo, Buenos Aires
                 </a>
               </div>
@@ -571,6 +596,8 @@ export default function Page() {
             </div>
             <div>
               <form className="contact-form" name="contacto" action="https://api.web3forms.com/submit" method="POST">
+                <h3 className="form-title">Envianos tu consulta</h3>
+                <p className="form-sub">Completá tus datos y te contactamos en el día hábil.</p>
                 <input type="hidden" name="access_key" defaultValue="fc1c3703-b5c0-45ca-8460-332ea2183c2f" />
                 {" "}
                 <input type="hidden" name="subject" defaultValue="Nuevo contacto desde matafuegospesse.com" />
@@ -605,30 +632,13 @@ export default function Page() {
                 {" "}
                 <textarea id="f-mensaje" name="mensaje" className="form-input form-textarea" placeholder="Contanos más sobre lo que necesitás…"></textarea>
                 {" "}
-                <button type="submit" className="btn-white">Enviar consulta</button>
+                <button type="submit" className="form-submit">Enviar consulta <span aria-hidden="true">→</span></button>
               </form>
             </div>
           </div>
         </div>
       </section>
-      <footer>
-        <div className="container">
-          <div className="footer-inner">
-            <a href="/" className="nav-logo">
-              <img width={297} height={102} loading="lazy" decoding="async" src="/img/matafuegos-pesse.avif" alt="Matafuegos Pesse" style={{ height: "34px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1) opacity(0.3)" }} />
-            </a>
-            <p className="footer-copy">© 2026 Matafuegos Pesse · Sarandí 416, Merlo, Buenos Aires</p>
-            <ul className="footer-nav">
-              <li><a href="/recarga-de-matafuegos/">Recarga de matafuegos</a></li>
-              <li><a href="/seguridad-e-higiene/">Seguridad e Higiene</a></li>
-              <li><a href="/certificaciones/">Certificaciones</a></li>
-              <li><a href="/preguntas-frecuentes/">Preguntas frecuentes</a></li>
-              <li><a href="/#contacto">Contacto</a></li>
-              <li><a href="/blog/">Blog</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   )
 }
@@ -640,7 +650,7 @@ const css = `:root {
   --red-dark: #900E18;
   --white: #FFFFFF;
   --gray-bg: #F5F6F8;
-  --gray-mid: #737880;
+  --gray-mid: #5C6169;
   --gray-border: #DEE1E6;
   --max-w: 1200px;
 }
@@ -708,7 +718,7 @@ nav {
 .btn-primary:hover { background: var(--red-dark); }
 
 /* SECTIONS */
-section { padding: 80px 0; }
+section { padding: 80px 0; scroll-margin-top: 64px; }
 
 .section-label {
   font-size: 12px;
@@ -735,27 +745,37 @@ section { padding: 80px 0; }
 .section-header { margin-bottom: 48px; }
 
 /* SERVICIOS */
+#servicios { background: var(--gray-bg); }
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: var(--gray-border);
-  border: 2px solid var(--gray-border);
+  gap: 20px;
 }
 
 .service-card {
   background: var(--white);
-  padding: 40px 36px;
-  transition: background .15s;
+  border: 1px solid var(--gray-border);
+  border-top: 3px solid var(--red);
+  border-radius: 10px;
+  padding: 32px 30px;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.service-card:hover { background: #FAFBFC; }
+.service-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(17,17,17,0.08); }
 
 .service-icon {
-  font-size: 28px;
+  width: 52px;
+  height: 52px;
   margin-bottom: 18px;
-  display: block;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #FCEBEC;
+  color: var(--red);
 }
+
+.service-icon svg { width: 28px; height: 28px; }
 
 .service-title {
   font-family: var(--font-barlow), sans-serif;
@@ -794,42 +814,33 @@ section { padding: 80px 0; }
   margin-bottom: 10px;
 }
 
+.diff-section .section-label { color: #F2606A; }
+
 .diff-text {
   font-size: 14px;
-  color: #5A6068;
+  color: #A3A9B1;
   line-height: 1.65;
 }
 
 /* CLIENTES */
-.clients-section { background: var(--gray-bg); }
+.clients-section { background: var(--white); padding: 56px 0; border-bottom: 1px solid var(--gray-border); }
+.clients-section .section-label { text-align: center; margin-bottom: 24px; }
 
 .clients-strip {
+  list-style: none;
   display: flex;
-  gap: 0;
-  align-items: stretch;
   flex-wrap: wrap;
-}
-
-.client-badge {
-  flex: 1;
-  min-width: 140px;
-  padding: 24px 20px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  border-right: 1px solid var(--gray-border);
-  border-bottom: 1px solid var(--gray-border);
+  gap: 12px 48px;
 }
-
-.client-badge:last-child { border-right: none; }
 
 .client-name {
   font-family: var(--font-barlow), sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #B0B5BC;
-  text-align: center;
-  letter-spacing: 0.04em;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--gray-mid);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 /* REDES */
@@ -953,19 +964,24 @@ section { padding: 80px 0; }
 }
 
 /* CONTACTO */
-.contact-section { background: var(--red); }
+.contact-section {
+  background: radial-gradient(ellipse 70% 60% at 0% 0%, rgba(196,30,42,0.22), transparent 70%), #161616;
+  border-top: 3px solid var(--red);
+}
+
+.contact-section .section-label { color: #F2606A; }
 
 .contact-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 64px;
   align-items: start;
 }
 
 .contact-methods {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   margin-top: 32px;
 }
 
@@ -975,7 +991,7 @@ section { padding: 80px 0; }
   gap: 14px;
   font-size: 15px;
   font-weight: 500;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.88);
   text-decoration: none;
   transition: color .15s;
 }
@@ -983,81 +999,80 @@ section { padding: 80px 0; }
 .contact-method:hover { color: var(--white); }
 
 .contact-icon {
-  font-size: 18px;
-  width: 32px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(196,30,42,0.18);
+  color: #F2606A;
+  transition: background .15s, color .15s;
 }
+
+.contact-method:hover .contact-icon { background: var(--red); color: var(--white); }
+
+.contact-icon svg { width: 18px; height: 18px; }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 36px 32px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+
+.form-title {
+  font-size: 26px;
+  color: var(--black);
+}
+
+.form-sub {
+  font-size: 14px;
+  color: var(--gray-mid);
+  margin-bottom: 6px;
 }
 
 .form-input {
-  padding: 12px 16px;
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.28);
-  border-radius: 4px;
+  padding: 13px 16px;
+  background: var(--gray-bg);
+  border: 1px solid var(--gray-border);
+  border-radius: 6px;
   font-size: 15px;
-  color: var(--white);
+  color: var(--black);
   font-family: var(--font-inter), sans-serif;
   outline: none;
-  transition: border-color .15s;
+  transition: border-color .15s, box-shadow .15s, background .15s;
 }
 
-.form-input::placeholder { color: rgba(255,255,255,0.45); }
-.form-input:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.18); }
+.form-input::placeholder { color: var(--gray-mid); }
+.form-input:focus { border-color: var(--red); background: var(--white); box-shadow: 0 0 0 3px rgba(196,30,42,0.15); }
 .form-input option { color: var(--black); background: var(--white); }
 
 .form-textarea { resize: vertical; min-height: 110px; }
 
-.btn-white {
-  background: var(--white);
-  color: var(--red);
-  padding: 14px 28px;
-  border-radius: 4px;
+.form-submit {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: var(--white);
+  padding: 15px 28px;
+  border-radius: 6px;
   font-size: 15px;
   font-weight: 600;
   border: none;
   cursor: pointer;
   font-family: var(--font-inter), sans-serif;
-  align-self: flex-start;
-  transition: opacity .15s;
+  margin-top: 4px;
+  transition: background .15s;
 }
 
-.btn-white:hover { opacity: 0.88; }
-
-/* FOOTER */
-footer {
-  background: var(--black);
-  padding: 36px 0;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-copy { font-size: 13px; color: #3A4048; }
-
-.footer-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px 24px;
-  list-style: none;
-}
-
-.footer-nav a {
-  font-size: 13px;
-  color: #3A4048;
-  text-decoration: none;
-  transition: color .15s;
-}
-
-.footer-nav a:hover { color: #6A7078; }
+.form-submit:hover { background: var(--red-dark); }
+.form-submit:focus-visible { outline: 3px solid rgba(196,30,42,0.35); outline-offset: 2px; }
 
 /* RESPONSIVE */
 
@@ -1097,19 +1112,25 @@ footer {
 
 @media (max-width: 700px) {
   .gallery-row-3 { grid-template-columns: 1fr 1fr; }
-  .gallery-row-2 { grid-template-columns: 1fr; }
+  .gallery-row-3 .gallery-item:first-child { grid-column: span 2; aspect-ratio: 16/9; }
 }
 
 @media (max-width: 960px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .diff-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .redes-inner, .seg-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
 }
 
 @media (max-width: 600px) {
   section { padding: 56px 0; }
-  .services-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; gap: 12px; }
+  /* phones: icon beside the text, so six cards don't take two screens */
+  .service-card { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; padding: 20px; }
+  .service-icon { grid-row: span 2; width: 44px; height: 44px; margin: 0; }
+  .service-icon svg { width: 24px; height: 24px; }
+  .service-title { font-size: 20px; margin-bottom: 6px; }
+  .contact-form { padding: 28px 20px; }
+  .form-submit { width: 100%; }
   .diff-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 
@@ -1119,7 +1140,11 @@ footer {
 img { height: auto; }
 .faq-list { max-width: 820px; }
 .faq-item { border-bottom: 1px solid var(--gray-border); padding: 18px 0; }
-.faq-item summary { font-weight: 600; font-size: 17px; cursor: pointer; }
+.faq-item summary { font-weight: 600; font-size: 17px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; flex-shrink: 0; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: #FCEBEC; color: var(--red); font-size: 20px; font-weight: 500; line-height: 1; transition: transform .2s ease; }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item summary:hover { color: var(--red); }
 .faq-item p { margin-top: 10px; color: #3A4048; }
 .faq-item a { color: var(--red); font-weight: 600; }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }

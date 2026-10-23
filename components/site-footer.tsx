@@ -1,24 +1,61 @@
-const LINKS = [
-  { href: "/recarga-de-matafuegos/", label: "Recarga de matafuegos" },
-  { href: "/seguridad-e-higiene/", label: "Seguridad e Higiene" },
-  { href: "/certificaciones/", label: "Certificaciones" },
-  { href: "/preguntas-frecuentes/", label: "Preguntas frecuentes" },
-  { href: "/#contacto", label: "Contacto" },
-  { href: "/blog/", label: "Blog" },
+import { WHATSAPP_URL } from "@/lib/site"
+
+const COLUMNS = [
+  {
+    title: "Servicios",
+    links: [
+      { href: "/recarga-de-matafuegos/", label: "Recarga de matafuegos" },
+      { href: "/matafuego-para-auto/", label: "Matafuegos para auto" },
+      { href: "/seguridad-e-higiene/", label: "Seguridad e Higiene" },
+      { href: "/certificaciones/", label: "Certificaciones" },
+    ],
+  },
+  {
+    title: "Empresa",
+    links: [
+      { href: "/nosotros/", label: "Nosotros" },
+      { href: "/preguntas-frecuentes/", label: "Preguntas frecuentes" },
+      { href: "/blog/", label: "Blog" },
+      { href: "/#contacto", label: "Contacto" },
+    ],
+  },
 ]
 
-/** Footer of the inner pages (the home page has its own, with the logo). */
+/** Footer shared by every page: brand, link columns, contact details. */
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <ul className="footer-nav">
-        {LINKS.map((l) => (
-          <li key={l.href}>
-            <a href={l.href}>{l.label}</a>
-          </li>
+      <div className="footer-grid">
+        <div className="footer-brand">
+          <a href="/" className="footer-logo">
+            <img width={297} height={102} loading="lazy" decoding="async" src="/img/matafuegos-pesse.avif" alt="Matafuegos Pesse" />
+          </a>
+          <p>Venta, recarga y mantenimiento de matafuegos con certificación IRAM. Desde 1995 en Merlo, Zona Oeste.</p>
+        </div>
+        {COLUMNS.map((c) => (
+          <div key={c.title}>
+            <p className="footer-title">{c.title}</p>
+            <ul>
+              {c.links.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
-      </ul>
-      <p className="footer-copy">© 2026 Matafuegos Pesse · Sarandí 416, Merlo, Buenos Aires</p>
+        <div>
+          <p className="footer-title">Contacto</p>
+          <ul>
+            <li><a href="tel:02204861235">0220-486-1235</a></li>
+            <li><a href={WHATSAPP_URL}>WhatsApp: +54 11 2168-5408</a></li>
+            <li><a href="mailto:info@matafuegospesse.com">info@matafuegospesse.com</a></li>
+            <li>Sarandí 416, Merlo, Buenos Aires</li>
+            <li>Lun a vie 8 a 18 · Sáb 9 a 13</li>
+          </ul>
+        </div>
+      </div>
+      <p className="footer-copy">© 2026 Matafuegos Pesse. Todos los derechos reservados.</p>
     </footer>
   )
 }

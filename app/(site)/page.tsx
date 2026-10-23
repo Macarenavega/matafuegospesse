@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import type { CSSProperties, ReactNode } from "react"
 import { JsonLd } from "@/components/json-ld"
+import { SiteFooter } from "@/components/site-footer"
 import FireExtinguishHero from "@/components/ui/fire-extinguish-hero"
 import { WHATSAPP_URL } from "@/lib/site"
 
@@ -366,16 +367,14 @@ export default function Page() {
       </section>
       <section className="clients-section">
         <div className="container">
-          <p className="section-label">Clientes que nos eligen</p>
-          <div className="clients-strip">
-            <div className="client-badge"><span className="client-name">Eternit</span></div>
-            <div className="client-badge"><span className="client-name">Shell</span></div>
-            <div className="client-badge"><span className="client-name">Solo Deportes</span></div>
-            <div className="client-badge"><span className="client-name">Banco Nación</span></div>
-            <div className="client-badge" style={{ borderRight: "none" }}>
-              <span className="client-name">Banco Provincia</span>
-            </div>
-          </div>
+          <p className="section-label">Empresas e instituciones que confían en nosotros</p>
+          <ul className="clients-strip">
+            <li className="client-name">Eternit</li>
+            <li className="client-name">Shell</li>
+            <li className="client-name">Solo Deportes</li>
+            <li className="client-name">Banco Nación</li>
+            <li className="client-name">Banco Provincia</li>
+          </ul>
         </div>
       </section>
       <section className="cap-section" id="capacitaciones">
@@ -639,24 +638,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <footer>
-        <div className="container">
-          <div className="footer-inner">
-            <a href="/" className="nav-logo">
-              <img width={297} height={102} loading="lazy" decoding="async" src="/img/matafuegos-pesse.avif" alt="Matafuegos Pesse" style={{ height: "34px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1) opacity(0.6)" }} />
-            </a>
-            <p className="footer-copy">© 2026 Matafuegos Pesse · Sarandí 416, Merlo, Buenos Aires</p>
-            <ul className="footer-nav">
-              <li><a href="/recarga-de-matafuegos/">Recarga de matafuegos</a></li>
-              <li><a href="/seguridad-e-higiene/">Seguridad e Higiene</a></li>
-              <li><a href="/certificaciones/">Certificaciones</a></li>
-              <li><a href="/preguntas-frecuentes/">Preguntas frecuentes</a></li>
-              <li><a href="/#contacto">Contacto</a></li>
-              <li><a href="/blog/">Blog</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   )
 }
@@ -841,35 +823,24 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
 }
 
 /* CLIENTES */
-.clients-section { background: var(--gray-bg); }
+.clients-section { background: var(--white); padding: 56px 0; border-bottom: 1px solid var(--gray-border); }
+.clients-section .section-label { text-align: center; margin-bottom: 24px; }
 
 .clients-strip {
+  list-style: none;
   display: flex;
-  gap: 0;
-  align-items: stretch;
   flex-wrap: wrap;
-}
-
-.client-badge {
-  flex: 1;
-  min-width: 140px;
-  padding: 24px 20px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  border-right: 1px solid var(--gray-border);
-  border-bottom: 1px solid var(--gray-border);
+  gap: 12px 48px;
 }
-
-.client-badge:last-child { border-right: none; }
 
 .client-name {
   font-family: var(--font-barlow), sans-serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 600;
   color: var(--gray-mid);
-  text-align: center;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 /* REDES */
@@ -1103,38 +1074,6 @@ section { padding: 80px 0; scroll-margin-top: 64px; }
 .form-submit:hover { background: var(--red-dark); }
 .form-submit:focus-visible { outline: 3px solid rgba(196,30,42,0.35); outline-offset: 2px; }
 
-/* FOOTER */
-footer {
-  background: var(--black);
-  border-top: 1px solid #2A2A2A;
-  padding: 36px 0;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-copy { font-size: 13px; color: #9AA0A8; }
-
-.footer-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px 24px;
-  list-style: none;
-}
-
-.footer-nav a {
-  font-size: 13px;
-  color: #9AA0A8;
-  text-decoration: none;
-  transition: color .15s;
-}
-
-.footer-nav a:hover { color: var(--white); }
-
 /* RESPONSIVE */
 
 @media (max-width: 700px) {
@@ -1173,14 +1112,13 @@ footer {
 
 @media (max-width: 700px) {
   .gallery-row-3 { grid-template-columns: 1fr 1fr; }
-  .gallery-row-2 { grid-template-columns: 1fr; }
+  .gallery-row-3 .gallery-item:first-child { grid-column: span 2; aspect-ratio: 16/9; }
 }
 
 @media (max-width: 960px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .diff-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .redes-inner, .seg-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
 }
 
 @media (max-width: 600px) {
@@ -1202,7 +1140,11 @@ footer {
 img { height: auto; }
 .faq-list { max-width: 820px; }
 .faq-item { border-bottom: 1px solid var(--gray-border); padding: 18px 0; }
-.faq-item summary { font-weight: 600; font-size: 17px; cursor: pointer; }
+.faq-item summary { font-weight: 600; font-size: 17px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; flex-shrink: 0; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: #FCEBEC; color: var(--red); font-size: 20px; font-weight: 500; line-height: 1; transition: transform .2s ease; }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item summary:hover { color: var(--red); }
 .faq-item p { margin-top: 10px; color: #3A4048; }
 .faq-item a { color: var(--red); font-weight: 600; }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
